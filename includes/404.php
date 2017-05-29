@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-	
+<?php echo $url_path; ?>
 
 <div class="container">
 	<div class="row clearfix">

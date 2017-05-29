@@ -16,6 +16,10 @@ function get_footer(){
 	require_once('./footer.php');
 }
 
+function get_common_page(){
+	require_once('./common_page.php');
+}
+
 function getUserInfo($uid, $pwd){
 	$query = mysql_query("SELECT * FROM user WHERE user_id='$uid' AND pw='$pwd'") or die('');
 	// 判断信息是否正确
@@ -27,7 +31,10 @@ function getUserInfo($uid, $pwd){
 		);
 	}return $userinfo;
 }
-
+function getLatestMessage() {
+	$query = mysql_query("SELECT * FROM publish ORDER BY time DESC LIMIT 0,10");
+	
+}
 // 检查用户是否登录
 // 返回值为false为未登录，返回值为ture为已登录
 function checklogin(){
