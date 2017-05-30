@@ -22,6 +22,23 @@ var main = {
 			});
 		});
 	},
+	loginWithEmail: function(){
+		var user_login = $("#user_login");
+		$("#user_login button[name='log_submit']").click(function(){
+			var uid = user_login.find("input[name='log_email']").val();
+			var pwd = user_login.find("input[name='log_pwd']").val();
+			$.ajax({
+				type: "POST",
+				url: "/login-ajax.php",
+				cache: false,
+				data: "uid="+uid+"&pwd="+pwd+"&action=login",
+				success: function(msg){
+					alert(msg);
+					window.location.reload();
+				}
+			});
+		});
+	},
 	logout: function(){
 		$("#user_logout").click(function(){
 			$.ajax({

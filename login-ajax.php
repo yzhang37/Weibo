@@ -22,7 +22,12 @@ if( $action == 'login' ){
 	} else {
 		echo "error";
 	}
-} elseif ( $action == 'logout' ) {
+} elseif ($action == 'loginWithEmail')
+{
+	$email = $_POST['email'];
+	$pwd = $_POST['pwd'];	
+}
+elseif ( $action == 'logout' ) {
 	if(logout()) echo "success";
 	else echo "error";
 }
