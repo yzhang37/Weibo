@@ -5,7 +5,6 @@ require_once('functions.php');
 require_once('config.php');
 get_header(); 
 ?>
-
 <div class="container login">
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
@@ -22,7 +21,7 @@ get_header();
                 			还没有账号吗？
                 			<a href="/register" class="btn btn-default">立即注册</a>
               		</div>
-                    <button type="submit" name="log_submit" id="log_submit" class="btn btn-primary">登录</button>
+              		<button type="submit" name="log_submit" id="log_submit" class="btn btn-primary">登录</button>
                 </div>
             </form>
         </div>
