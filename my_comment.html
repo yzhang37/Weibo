@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>weibo-发现好玩有趣的事情</title>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+   <script src="js/jquery-2.1.0.min.js"></script>
+   <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="js/jQuery-cookie.js"></script>
+   <link href="styles/weibo.css" type="text/css" rel="stylesheet" />
+   <script type="text/javascript">
+       function res(){
+  	var content = prompt("请输入要回复的内容","内容");
+  	$.ajax({
+             type: "POST",
+             url:"url",//-------------------------------------------------------需要填写php的URL
+			 async: false,
+             data: {"username":$.cookie("username"),"request":"comment","message":$("#message").val(),"content":content},//给服务器端传递用户昵称，类型为json,传递的类型需要和后台协商，这里给出必要3项：评论用户名称、请求类型、被评论微博id、评论内容
+			 dataType:"text",//需要传递回确认信息
+             success: function(){
+			   window.location.reload();//刷新页面
+				}
+			 error: function(){
+			 alert("回复失败！");
+			 }
+         });
+
+  };
+  </script>
+	<script>
+	$(document).ready(function(){
+		if($.cookie("username"))  $("#username").text($.cookie("username"));//导航栏中的用户名字段设置为当前登录用户名
+	});
+	<!--消息获取-->
+	$(document).ready(function(){
+		$.ajax({
+             type: "GET",
+             url://-------------------------------------------------------需要填写php的URL
+			 async: false,
+             data: {"username":$.cookie("username"),"request":"my_comment"},//给服务器端传递用户昵称，类型为json,这里是本人用户名称
+			 dataType:"json",//需要传递回被评论微博发送者的用户名称sendername，评论时间time，用户名称sendername，微博内容message,评论内容comment
+             success: function(data){
+			   var json = eval(data); //数组  
+               $.each(json, function (index, item) {  
+                   //循环获取数据并且填充相应的html元素        
+                   var time = json[index].time;	
+				   var sendername = json[index].sendername;	
+				   var message = json[index].message;
+				   var headurl = json[index].headurl;
+				   var time_comment = json[index].time_comment;
+				   var comment = json[index].comment;
+				   var myname = json[index].myname;
+
+
+				   $("#myname").text(myname);
+				   $("#time").text(time);
+				   $("#head").attr("src",headurl); //头像
+                   $("#descrip").text(descrip);
+				   $("#time_comment").text(time_comment);
+				   $("#sendername").text(sendername);
+				   $("#message").text(message);
+				   $("#comment").text(comment);
+				   })
+				}
+			 error: function(){
+			 alert("获取微博消息失败");
+			 }
+         });
+	});
+	$(document).ready(function(){
+		$("#response").click(function(){});//回复按钮，尚未完成
+	};
+	</script>
+</head>
+
+<body background="images/pbg.jpg">
+
+<!------------------------------------------头部------------------------------------>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+				<div class="navbar-header">
+					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span>
+					 <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" style="font-size:30px"><strong>weibo<strong/></a>
+				</div>
+				
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input class="form-control" type="text" />
+						</div> <button type="submit" class="btn btn-default">搜索</button>
+					</form>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="active">
+							 <a href="http://localhost:81/weibo/weibo.html"><span class="glyphicon glyphicon-home" style="color: rgb(0,0,0);"> 首页</span></a>
+						</li>
+						<li>
+							 <a href="#"><span class="glyphicon glyphicon-film" style="color: rgb(0,0,0);"> 视频</span></a>
+						</li>
+						<li>
+							 <a id="username" href="#"><span class="glyphicon glyphicon-user" style="color: rgb(0,0,0);">用户名我是weibo</span></a><!--需要显示用户名-->
+						</li>
+						<li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" style="color: rgb(0,0,0);">设置</span><strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									 <a href="#">账号设置</a>
+								</li>
+								<li>
+									 <a href="#">会员中心</a>
+								</li>
+								<li>
+									 <a href="#">V认证</a>
+								</li>
+								<li>
+									 <a href="#">隐私设置</a>
+								</li>
+								<li>
+									 <a href="#">屏蔽设置</a>
+								</li>
+								<li>
+									 <a href="#">消息设置</a>
+								</li>
+								<li>
+									 <a href="#">帮助中心</a>
+								</li>
+							</ul>
+						</li>
+						
+					</ul>
+				</div>
+				
+			</nav>
+		</div>
+	</div>
+</div>
+
+<div class="container" style="background-color:rgba(36,61,89,0.25);">
+
+  <!--------------------------------------左部------------------------------------------>
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="row clearfix" >
+				
+				<div class="col-md-2 column">
+				 
+					<ul class="nav nav-tabs nav-stacked" style="position:fixed;width:170px;top:60px;font-size:15px;background-color:#E8E8E8;opacity:0.5;">
+					<!-------需要填充超链接---->
+								<li>
+									 <a href="http://localhost:81/weibo/weibo.html" ><span class="glyphicon glyphicon-home" style="color: rgb(0,0,0);"> 首页</span></a>
+								</li>
+								<li>
+									 <a href="#"><span class="glyphicon glyphicon-heart" style="color: rgb(0,0,0);"> 我的关注</span></a>
+								</li>
+								<li>
+									 <a href="#"><span class="glyphicon glyphicon-heart" style="color: rgb(0,0,0);"> 关注我的</span></a>
+								</li>
+								<li>
+									 <a href="#"><span class="glyphicon glyphicon-thumbs-up" style="color: rgb(0,0,0);"> 我的赞</span></a>
+								</li>
+								<li>
+									 <a href="#"><span class="glyphicon glyphicon-thumbs-up" style="color: rgb(0,0,0);"> 收到赞</span></a>
+								</li>
+								<li class="active">
+									 <a href="#"><span class="glyphicon glyphicon-edit" style="color: rgb(0,0,0);"> 我的评论</span></a>
+								</li>	
+								<li>
+									 <a href="#"><span class="glyphicon glyphicon-edit" style="color: rgb(0,0,0);"> 收到评论</span></a>
+								</li></hr>
+								<li>
+									 <a href="#"><span class="glyphicon glyphicon-hand-right" style="color: rgb(0,0,0);"> 热门微博</span></a>
+								</li>
+								<li>
+									 <a href="#"><span class="glyphicon glyphicon-hand-right" style="color: rgb(0,0,0);"> 热门视频</span></a>
+								</li></hr>
+								<li>
+									 <a href="#"><span class="glyphicon glyphicon-hand-right" style="color: rgb(0,0,0);"> 搞笑幽默</span></a>
+								</li> 
+								<li>
+									 <a href="#"><span class="glyphicon glyphicon-hand-right" style="color: rgb(0,0,0);"> 视频音乐</span></a>
+								</li>
+								<li>
+									 <a href="#"><span class="glyphicon glyphicon-hand-right" style="color: rgb(0,0,0);"> 新闻趣事</span></a>
+								</li>
+								<li>
+									 <a href="#"><span class="glyphicon glyphicon-hand-right" style="color: rgb(0,0,0);"> 娱乐圈</span></a>
+								</li>
+					</ul>
+				</div>
+				<!-----------------------------------------------------------中部---------------------------------------------------->
+
+<div class="col-md-7 column" style="position:relative;top:60px;">
+	<div class="page-header" style="background-color:white;margin-left:-15px;height:25px;margin-bottom:5px;margin-top:-10px;opacity:0.8;margin-right:-15px;position:relative;">
+	<h4>我的评论</h4>
+	</div>
+<!--------------------------------------------一条消息------------------------------------------>
+	 <div class="row clearfix" style="background-color:white;position:relative;">
+		<div class="col-md-12 column">
+			<!-----------------------------------头像和名称------------------------------------>			
+			<div class="row clearfix">
+				<div class="col-md-8 column">
+					<div class="media">
+						 <a id="head" href="#" class="pull-left" target="_blank"><img src="images/weibo.jpg" class="media-object" style="border-radius:50%;width:80px;height:80px;" alt='' /></a>
+						<div class="media-body">
+							<a id="myname" href="#" target="_blank"><h4 class="media-heading">
+								我是weibo
+							</h4></a>
+							<p id="time_comment" class="txt" style="text-align:left;font-size:12px;color:#B3B3B3">5月24日 16:20</p>
+							<p id="descrip">一个乐于发现好玩有趣事物的新新人类</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-1 column"></div>
+			</div>
+			</br>
+			<!------------------------------------中间消息主体------------------------------>
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+				<!---------------------------文字部分---------------------->
+					<div class="txt" style="font-family:sans-serif;">
+					<p id="comment">#今天你吃了什么#
+						今天我吃了好多喜欢的</p>
+					</div></br>
+				</div>
+									<!--------------------------引用原微博-------------------->
+					<blockquote>
+					<a id="sendername">
+					sendername
+					</a> 
+					<p id="time" class="txt" style="text-align:left;font-size:12px;color:#B3B3B3">
+					time
+					</p>
+					<small id="message"><cite>message</cite></small>
+					</blockquote>
+			</div>
+			<!---------------------------------------回复按钮-------------------------------------->
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+				<div class="col-md-9 column"></div>
+						<div class="col-md-3 column"><div class="txt">
+						<span class="glyphicon glyphicon-edit"></span><a href="javascript:;" onclick="res()">回复</a></span>&nbsp;
+						</div>						
+				</div>
+			</div>
+		</div>
+	</div><br/>
+	</div>
+<!------------------------------------------------------------消息结束----------------------------------------------------------->
+
+
+
+<!------------------------------------------------------------消息展示结束----------------------------------------------------------->
+</div><br/>
+
+<!------------------------------------------------------------------右部------------------------------------------------------------------>
+		<div class="col-md-3 column" >
+            <div class="row clearfix">
+		        <div class="col-md-12 column" style="width:280px;background-color:white;opacity:0.7;margin-left:10px;top:40px;">
+                <h4 class="obj_name"><span class="main_title W_fb W_f14">微博意见反馈</span></h4>
+                	<div class="WB_innerwrap">
+			     		<div class="list_wrap">
+			     			<a style="color: rgb(0,0,0)";>欢迎使用微博并提出宝贵建议。请<a href="#">点击这里</a>提交微博意见反馈。</a><br><br>
+		         			<ul class="ul_hot" id="sgs">
+							<li class="txt">
+		              		<a href="#">微博常见问题</a>
+		              		</li>
+		              		<li class="txt">
+		              		<a href="#">微博客服专区</a>
+		              		</li>
+		              		<li class="txt">
+		              		<a href="#">全国人大常委会《关于加强网络信息保护的决定》</a>
+		              		</li>
+		        			</ul>
+		        			<br>
+		        			<a href="#" style="font-size:18px;color: rgb(180,180,0);"><span class="glyphicon glyphicon-warning-sign"> 微博举报处理中心</a>
+		        		</div>
+                	</div>
+	            </div>
+	        </div>
+	        </br>
+	        </br>
+	        </br>
+	        	        <div class="row clearfix">
+		        <div class="col-md-12 column" style="width:280px;background-color:white;opacity:0.7;margin-left:10px;">
+                <h4 class="obj_name"><span class="main_title W_fb W_f14">评论使用小帮助</span></h4>
+			     			<a style="color:rgb(0,0,0);">Q:评论太多，想分类看？</a>
+			     			</br>
+			     			<a style="color:rgb(0,0,0);">A:你可以通过分类筛选，只查看自己关注的人。</a>
+							</br>
+							</br>
+							<a style="color:rgb(0,0,0);">Q：不希望某些人评论自己？</a>
+			     			</br>
+			     			<a style="color:rgb(0,0,0);">A:可以设置仅关注的人才能给自己发评论。</a>
+							</br>
+							</br>
+							<a style="color:rgb(0,0,0);">Q：不希望收到某些人的评论提醒？</a>
+			     			</br>
+			     			<a style="color:rgb(0,0,0);">A:你可以设置评论的提醒范围。</a>
+							</br>
+							</br>
+	            </div>
+	        </div>
+
+</body>
