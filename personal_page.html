@@ -1,0 +1,376 @@
+//这是“我”的个人主页
+<!DOCTYPE html>
+<html>
+<head>
+   <title>weibo-发现好玩有趣的事情</title>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+   <!--<script src="http://cdn.static.runoob.com/libs/jquery/2.0.0/jquery.min.js"></script>!-->
+   <script src="js/jquery-2.1.0.min.js"></script>
+   <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/easyform/easyform.js"></script>
+    
+	<link rel="stylesheet" href="css/platform-1.css">
+    <link rel="stylesheet" href="js/easyform/easyform.css">
+	
+    <link rel="stylesheet" href="css/tab.css">  
+	<style type="text/css">	  
+	  /*returnTop*/
+     p#back-to-top{ 
+     position:fixed; 
+     display:none; 
+     bottom:60px; 
+     right:100px; 
+     } 
+     p#back-to-top a{ 
+     text-align:center; 
+     text-decoration:none; 
+     color:#d1d1d1; 
+     display:block; 
+      width:64px;
+     font-size:15px	;  
+     /*使用CSS3中的transition属性给跳转链接中的文字添加渐变效果*/
+     -moz-transition:color 1s; 
+     -webkit-transition:color 1s; 
+     -o-transition:color 1s; 
+      } 
+     p#back-to-top a:hover{ 
+     color:#979797; 
+      } 
+     p#back-to-top a span{ 
+     background:transparent url(/static/imgs/sprite.png?1202) no-repeat -25px -290px; 
+     border-radius:6px; 
+     display:block; 
+     height:64px; 
+     width:56px; 
+     margin-bottom:5px; 
+    /*使用CSS3中的transition属性给<span>标签背景颜色添加渐变效果*/
+    -moz-transition:background 1s; 
+   -webkit-transition:background 1s; 
+   -o-transition:background 1s; 
+    }
+    #back-to-top a:hover span{ 
+       background:transparent url(/image/top.bng) no-repeat -25px -290px; 
+    }
+	</style>
+
+	
+	
+<!------------------------------------------------------js代码部分------------------------------------------------------------------------->
+<script> 
+  
+  $(function(){ //------------------------点击后回到页面顶部----------------------
+  //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失 
+  $(function () { 
+    $(window).scroll(function(){ 
+    if ($(window).scrollTop()>100){ 
+    $("#back-to-top").fadeIn(500); 
+     } 
+    else
+    { 
+     $("#back-to-top").fadeOut(500); 
+    } 
+   }); 
+   //当点击跳转链接后，回到页面顶部位置 
+   $("#back-to-top").click(function(){ 
+   $('body,html').animate({scrollTop:0},500); 
+   return false; 
+   }); 
+   }); 
+  }); 
+  
+       
+    $(function () {//利用cookie获取用户各项信息
+　　　 if($.cookie("username")) $("#username").val($.cookie("username"));//读取cookie的信息
+       $.ajax({
+             type: "GET",
+             url://-------------------------------------------------------需要填写php的URL
+			 async: false,
+             data: {username:$("#username").val()},
+			 dataType:"json",//需要传递回用户标签表述descrip，用户头像headurl，follow数量num_follow，fans数量num_fans和发微博数量num_weibo
+             success: function(data){
+			   var json = eval(data); //数组  
+               $.each(json, function (index, item) {  
+                   //循环获取数据       
+                   var descrip = json[index].descrip;
+                   var headurl= json[index].headurl;  
+                   var num_follow = json[index].num_follow;	
+				   var num_fans = json[index].num_fans;	
+				   var num_weibo = json[index].num_weibo;
+				   
+				   $("#head").attr("src",headurl)
+                   row.find("#descrip").text(descrip);
+				   row.find("#num_follow").text(num_follow);
+				   row.find("#num_fans").text(num_fans);
+				   row.find("#num_weibo").text(num_weibo);
+                    )};  },	  
+			 error：function(){
+			 alert("获取用户信息失败");
+			 }
+         });
+        })
+
+</script>
+
+</head>
+
+<body  style="background-color:#ffffcc;"background="image/body_bg_page.jpg">
+<!--------------------------------------------导航栏-------------------------------------------------------------->
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+				<div class="navbar-header">
+					 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> 
+					 <span class="sr-only">Toggle navigation</span>
+					 <span class="icon-bar"></span>
+					 <span class="icon-bar"></span>
+					 <span class="icon-bar"></span>
+					 </button> <a class="navbar-brand" href="#">Weibo</a>
+				</div>
+				
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				    <form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input class="form-control" type="text" />
+						</div> <button class="btn btn-default" type="submit">搜索</button>
+					</form>
+					<ul class="nav navbar-nav navbar-right">
+				        <li >
+							 <a href="http://localhost/personal_home.html"><span class="glyphicon glyphicon-home" style="color: rgb(0,0,0);"> 首页</span></a>
+						</li>
+						<li>
+							 <a href="#"><span class="glyphicon glyphicon-film" style="color: rgb(0,0,0);"> 视频</span></a>
+						</li>
+						<li class="active">
+							 <a href="#"><span class="glyphicon glyphicon-user" style="color: rgb(0,0,0);"> 我是weibo</span></a>
+						</li>
+						<li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" style="color: rgb(0,0,0);"> 关于我们</span><strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									 <a href="#">账号设置</a>
+								</li>
+								<li>
+									 <a href="#">会员中心</a>
+								</li>
+								<li>
+									 <a href="#">V认证</a>
+								</li>
+								<li>
+									 <a href="#">隐私设置</a>
+								</li>
+								<li>
+									 <a href="#">屏蔽设置</a>
+								</li>
+								<li>
+									 <a href="#">消息设置</a>
+								</li>
+								<li>
+									 <a href="#">帮助中心</a>
+								</li>
+								<li>
+									 <a href="http://localhost/index.php">退出</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+            </nav>
+		</div>
+	</div>
+  </div>
+  
+  
+ </br></br></br>
+<!----------------------------------------------页面主体部分------------------------------------------------------------------------------------------->
+  <div class="container" style="background-color:rgba(36,61,89,0.25)">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			
+    <!-----------------------------------------------背景图、头像和名称部分---------------------------------------------------------------->
+			<div  style="background:url(image/bg.jpg);padding:50px;width:950px;margin:0 auto" >
+			<img id="headurl"class="img-circle" width="100" height="100" src="images/weibo.jpg" />
+			<p class="text-center" style="font-size:22px" id="username">
+				我是weibo<br/>
+			  <b id="descrip"class="text-center" style="font-size:12px"> 一句话介绍一下自己吧，让别人更了解你</b>
+			</p>
+			</div>
+    <!-----------------------------------------------主页、相册、管理中心导航栏------------------------------------------------------------>			
+			 <div style="background-color:white;padding:10px;width:950px;margin:0 auto" >
+			      <div class="row clearfix">
+				    <div class="col-md-4">  </div>
+					<div class="col-md-8">
+				     <table>
+				      <tr>
+				       <td>
+					    <a href="#" class="active" style="font-size:20px;font-weight:200;color:black">我的主页</a> </td>
+				       <td>&nbsp; &nbsp; &nbsp;
+					    <a href="#" style="font-size:20px;font-weight:200;color:black">我的相册</a></td>
+				       <td>&nbsp; &nbsp; &nbsp;
+					    <a href="#" style="font-size:20px;font-weight:200;color:black">管理中心</a></td>
+				      </tr>
+			         </table>
+				    </div>
+				  </div>
+			</div>
+    <!-------------------------------------------页面左侧部分-------------------------------------------------------------------------------->			
+			<div class="row clearfix">
+			   <div class="col-md-offset-1 col-md-4">
+			   </br>
+      <!---------------------------------------关注数、粉丝数、微博数部分-------------------------------------------------------------->
+				<div  class="thumbnail" style="background-color:white;padding:20px;width:365px;margin:0 auto" >
+			    <table style="margin-left:3px;">
+                <tr>
+                  <td id="num_follow"style="width:90px;height:20px;">100</td>
+                  <td id="num_fans"style="width:90px;height:20px;">200</td>
+                  <td id="num_weibo"style="width:90px;height:20px;">300</td>
+                </tr>
+                <tr>
+                  <td style="width:80px;height:20px;">关注 </td>
+                  <td style="width:80px;height:20px;">粉丝 </td>
+                  <td style="width:80px;height:20px;">微博 </td>
+                </tr>
+                </table>
+				</div>
+				</br>
+      <!---------------------------------------------------资料完成度部分-------------------------------------------------------------->				
+				<div class="thumbnail" id="fixed" style="background-color:white;padding:20px;width:365px;margin:0 auto" >
+				  <h4 style="text-align:left">
+				   申请认证
+				  </h4> <hr />
+				  <p style="font-style:italic">资料完成度：50%</p>
+				  <div class="progress">
+	               <div class="progress-bar" role="progressbar" aria-valuenow="60"
+		                aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+		           </div>
+                   </div>
+				  <hr />
+				  <a class="btn" href="#">编辑个人资料 »</a>
+				  </div> <br/>
+      <!------------------------------------------------我发表的文章部分--------------------------------------------------------------->				
+				<div class="thumbnail" style="background-color:white;padding:20px;width:365px;margin:0 auto" >
+				  <h4 style="text-align:left">
+				   我发表的文章[1]
+				  </h4> <hr />				
+				  <img alt="Ballade" src="image/surface.jpg" style="margin:3px;" width="250" height="180"/>
+				  <p>
+					今天阳光真好,天空也很蓝，走在热闹的校园里，心里就响起了一首歌。
+				   </p>
+				   <hr />
+					<a class="btn" href="#">查看更多 »</a>
+				</div>
+				<br/>
+      <!-----------------------------------------------相册部分------------------------------------------------------------------------>				
+				 <div class="thumbnail" style="background-color:white;padding:20px;width:365px;margin:0 auto" >
+				  <h4 style="text-align:left">
+				   相册
+				  </h4>
+				  <table>
+				   <tr>
+				    <td><img alt="Ballade" src="image/p1.jpg" style="margin:3px;"width="100" height="100"/> </td>
+					<td><img alt="Ballade" src="image/p2.jpg" style="margin:3px;" width="100" height="100"/></td>
+					<td><img alt="Ballade" src="image/p3.jpg" style="margin:3px;"width="100" height="100"/></td>
+				   </tr>
+				   <tr>
+				    <td><img alt="Ballade" src="image/p4.jpg" style="margin:3px;"width="100" height="100"/></td>
+				    <td><img alt="Ballade" src="image/p5.jpg" style="margin:3px;"width="100" height="100"/></td>
+				    <td><img alt="Ballade" src="image/p6.jpg" style="margin:3px;"width="100" height="100"/></td>
+				   </tr>
+				  </table>
+				  <hr />
+				   <a class="btn" href="#">查看更多 »</a>
+				  </div>
+				  </br>
+      <!-------------------------------------------赞部分----------------------------------------------------------------------------->
+				  <div class="thumbnail" style="background-color:white;padding:20px;width:365px;margin:0 auto" >
+				  <h4 style="text-align:left">
+				   赞
+				  </h4> 
+				  <table>
+				  <tr>
+				  <td><img alt="Ballade" src="image/p7.jpg" style="margin:3px;" width="100" height="100"/></td>
+				  <td><p>茅子俊，果真是从江南水乡里走出来的”谦谦公子，温润如玉“啊[迷妹脸]</p></td>
+				  </tr>
+				  </table>
+				   <hr />
+				  <a class="btn" href="#">查看更多 »</a>
+				  </div>
+				</div>
+				
+			    </br>
+    <!-----------------------------------------------------页面左侧部分--------------------------------------------------------------------->				
+		<div class="col-md-7 column">
+      <!---------------------------------------------------导航栏-------------------------------------------------------------->				 
+				 <div class="thumbnail" style="background-color:white;padding:2px;width:555px;float:left" >
+			      <table>
+				   <tr>
+				    <td >&nbsp; &nbsp; &nbsp;
+					  <a href="#" class="active" style="font-size:18px;font-weight:200">全部</a> </td>
+				  <td>&nbsp; &nbsp; &nbsp;
+					 <a href="#" style="font-size:18px;font-weight:200">热门     </a></td>
+				  <td>&nbsp; &nbsp; &nbsp;
+					 <a href="#" style="font-size:18px;font-weight:200">更多    </a></td>
+				  </tr>
+			      </table>
+				  </div>
+      <!-----------------------------------------返回顶部的链接---------------------------------------------------------------->
+            <p id="back-to-top"><a href="#top"><span></span>返回顶部</a></p>
+			
+             
+      <!----------------------------------------------一条消息------------------------------------------->
+         <div class="thumbnail" style="background-color:white;padding:20px;width:555px;float:left" >
+			<!-----------------------------------头像和名称------------------------------------>			
+			<div class="row clearfix">
+				<div class="col-md-8 column">
+					<div class="media">
+						 <a href="#" class="pull-left" target="_blank"><img src="images/weibo.jpg" class="media-object" style="border-radius:50%;width:80px;height:80px;" alt='' /></a>
+						<div class="media-body">
+							<a href="#" target="_blank"style="text-align:left"><h4 class="media-heading">
+								我是weibo
+							</h4></a>
+							<p id="time" class="txt" style="text-align:left;font-size:12px;color:#B3B3B3">5月24日 16:20 <br/>
+							<b id="descrip"style="text-align:left;font-size:13px;color:black">一个乐于发现好玩有趣事物的新新人类</b></p>
+							
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 column"></div>
+			</div>
+			<!------------------------------------中间消息主体------------------------------>
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+				<!---------------------------文字部分------------------------->
+					<div class="txt" style="font-family:sans-serif;">#今天你吃了什么#
+						今天我吃了好多喜欢的
+					</div></br>
+				</div>
+			</div>
+			<!---------------------------------------下面的转发、评论、点赞--------------------------------------->
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+				<div class="col-md-8 column"></div>
+						<div class="col-md-4 column"><div class="txt">
+						<span class="glyphicon glyphicon-edit"></span>57935</span>&nbsp;
+						<span class="glyphicon glyphicon-thumbs-up"></span>123588</span></div>
+						</div>						
+				</div>
+			</div>
+		</div>
+	</div><br/>
+<!------------------------------------------------------------消息结束----------------------------------------------------------->
+		
+			
+		
+		
+	</div>
+   </div>	
+  </div>
+ </div>
+</div>
+
+
+
+  
+</body>
+</html>
