@@ -4,8 +4,12 @@
 require_once('functions.php');
 // 引入配置
 require_once('config.php');
+?>
+<nav class="navbar navbar-default navbar-fixed" role="navigation">
+	<?php
 get_header(); 
 ?>
+</nav>
 <div class="container login">
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
