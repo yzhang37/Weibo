@@ -23,7 +23,9 @@
 
   <div class="container-fluid">
     <div class="navbar-header">
+
       <a class="navbar-brand" href="#">WEIBO</a>
+
     </div>
     <?php if( checklogin() == false ){?>
     <ul class="nav navbar-nav navbar-right">
@@ -34,7 +36,7 @@
       		<div id="user_login" class="form-group">
       			<li><label>邮箱</label><input name="log_mail" type="text"/></li>
       			<li><label>密码</label><input name="log_pwd" type="text"/></li>
-      			<li><button class="btn" name="submit">登陆</button></li>
+      			<li><button class="btn btn-default" name="submit">登陆</button></li>
       		</div>
       	</ul>
       </li>

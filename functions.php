@@ -20,7 +20,7 @@ function get_common_page(){
 }
 
 function getUserInfo($uid, $pwd){
-	$query = mysql_query("SELECT * FROM user WHERE user_id='$uid' AND pw='$pwd'") or die('');
+	$query = mysql_query("SELECT uid, pwd FROM user WHERE user_id='$uid' AND pw='$pwd'") or die('');
 	// 判断信息是否正确
 	$userinfo = array();
 	if($row = mysql_fetch_array($query)){
@@ -29,6 +29,22 @@ function getUserInfo($uid, $pwd){
 			'pwd' => $pwd
 		);
 	}return $userinfo;
+}
+
+function getUserInfoWithEmail($mail, $pwd)
+{
+	$query = mysql_query("SELECT uid, pwd FROM user WHERE mail='$mail'") or die('');
+	
+	$userinfo = array();
+	$log_count = mysql_num_rows($query);
+	if ($log_count = 1)
+	{
+		$userinfo = array(
+			'uid' => mysql_field_name($query, 0),
+			'pwd' => mysql_field_name($query, 1)
+		);
+	}
+	return $user_info; 
 }
 
 // 检查用户是否登录
