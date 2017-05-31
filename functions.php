@@ -15,6 +15,9 @@ function get_header(){
 function get_footer(){
 	require_once('./footer.php');
 }
+function get_common_page(){
+	require_once('./common_page.php');
+}
 
 function getUserInfo($uid, $pwd){
 	$query = mysql_query("SELECT uid, pwd FROM user WHERE user_id='$uid' AND pw='$pwd'") or die('');

@@ -1,0 +1,260 @@
+//这是注册页面
+<!DOCTYPE html>
+<html>
+<head>
+   <title>weibo-发现好玩有趣的事情</title>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+   <script src="http://cdn.static.runoob.com/libs/jquery/2.0.0/jquery.min.js"></script>
+   <script src="js/jquery-2.1.0.min.js"></script>
+   <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/easyform/easyform.js"></script>
+    
+	<link rel="stylesheet" href="css/platform-1.css">
+    <link rel="stylesheet" href="js/easyform/easyform.css">
+	
+    <link rel="stylesheet" href="css/tab.css">
+
+
+  
+
+</head>
+
+<body  style="background-color:#ffffcc;"background="images/body_bg.jpg">
+<!-------------------------------------------------页面整体--------------------------------------------------->
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+				<div class="navbar-header">
+					 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> 
+					 <span class="sr-only">Toggle navigation</span>
+					 <span class="icon-bar"></span>
+					 <span class="icon-bar"></span>
+					 <span class="icon-bar"></span>
+					 </button> <a class="navbar-brand" href="#">Weibo</a>
+				</div>
+				
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				    <form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input class="form-control" type="text" />
+						</div> <button class="btn btn-default" type="submit">搜索</button>
+					</form>
+					<ul class="nav navbar-nav navbar-right">
+				        <li >
+							 <a href="http://localhost/index.php"><span class="glyphicon glyphicon-home" style="color: rgb(0,0,0);"> 首页</span></a>
+						</li>
+						<li>
+							 <a href="http://localhost/index.php"><span class="glyphicon glyphicon-user" style="color: rgb(0,0,0);"> 登录</span></a>
+						</li>
+						<li class="active">
+							 <a href="#"><span class="glyphicon glyphicon-tower" style="color: rgb(0,0,0);"> 注册</span></a>
+						</li>
+						<li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-leaf" style="color: rgb(0,0,0);"> 关于我们</span><strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									 <a href="#">联系我们</a>
+								</li>
+								<li>
+									 <a href="#">我们的故事</a>
+								</li>
+								<li>
+									 <a href="#">更多设置</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+            </nav>
+			<br/><br/>
+			 
+			 <h1 class="text-center" style="font-style:italic;font-size:35px">
+				<img src="images/weibo.jpg"/> 发现好玩有趣的事情
+			</h1>
+		</div>
+	</div>
+	
+	
+<!----------------------------------注册部分----------------------------------------------------->
+	<div  style="background-color:white;padding:15px;width:800px;margin:0 auto" >
+	       
+			<h3 class="text-left" >
+				注册
+			</h3>
+			<br/>
+    <div class="row clearfix">
+		<div class="col-md-8 column">
+<!--------------------------------下一行action里是提交表单后的处理程序--------------------------------------->
+			<form id="reg-form" class="form-horizontal" role="form" method="POST" action="##">
+				<div class="form-group" >
+					<label class="col-sm-3 control-label" for="inputEmail3"style="float:left">* 输入邮箱</label>
+					<div class="col-sm-7">
+						<input class="form-control" id="email" type="text" name="email" autofocus 
+						       data-easyform="email;real-time"
+                               data-message="请输入正确的邮箱格式！"
+							   data-easytip="position:top;class:easy-blue;" />  
+					</div>
+				</div>
+				<div class="form-group" >
+					 <label class="col-sm-3 control-label" for="inputEmail3"style="float:left">* 设置昵称</label>
+					<div class="col-sm-7">
+						<input class="form-control" id="name" type="text" name="nickname"
+                               data-easyform="length:4 16;char-chinese;real-time;";
+                               data-message="用户名必须为4—16位的中文、英文字母或数字"
+                               data-easytip="position:right;class:easy-blue;" 
+						/>  
+					</div>
+				</div>
+				<div class="form-group" >
+					 <label class="col-sm-3 control-label" for="inputPassword3"style="float:left">* 设置密码</label>
+					<div class="col-sm-7" >
+						<input class="form-control" id="psw1" type="password" name="password1"
+						       data-easyform="length:6 16;char-normal;real-time;"
+                               data-message="密码必须为6—16位"
+                               data-easytip="position:right;class:easy-blue;"/>
+					</div>
+				</div>
+				<div class="form-group" >
+					 <label class="col-sm-3 control-label" for="inputPassword3"style="float:left">* 再次输入密码</label>
+					<div class="col-sm-7">
+						<input class="form-control" id="psw2" type="password" name="password2"
+                          data-easyform="equal:#psw1;real-time"
+                          data-message="两次密码输入要一致" 
+						  data-easytip="position:right;class:easy-blue;"
+						/>
+					</div>
+				</div>
+                <div class="form-group">
+                    <label class="col-sm-3"for="name">一句话描述自己</label>
+                      <div class="col-sm-7">
+					  <textarea id="dscip" class="form-control" rows="3" name="dsci">我是....
+					  </textarea>
+					  </div>
+                </div>
+				<div class="buttons">
+					<input id="register" value="注 册" type="submit" style="margin-right:20px; margin-top:20px;">
+				</div>
+			</form>
+		</div>
+		
+		
+		
+		
+		<div class="col-md-4 column">
+			<p>
+				 已有账号，<a class="btn" href="index.php">直接登录>></a>
+			</p>
+        <hr style="border:1px dotted #000; height:1px">
+		<p>weibo注册帮助</p>
+                    <div class="reg_help">
+                    	<ul class="help_list">
+                        	<li><a target="_blank" href="#"style="font-size:12px">weibo注册操作指南</a></li>
+                            <li><a target="_blank" href="#"style="font-size:12px">手机注册时提示手机号码已被绑定怎么办?</a></li>
+                            <li><a target="_blank" href="#"style="font-size:12px">注册时昵称显示“已经被注册”如何处理?</a></li>
+                            <li><a target="_blank" href="#"style="font-size:12px">注册时提示"你所使用的IP地址异常",怎么办?</a></li>
+                        </ul>
+						<br/>
+                        <a target="_blank" href="http://help.weibo.com/faq/q/201" class="help_more"style="font-size:15px">更多帮助»</a>
+                    </div>
+	    </div>
+    </div>
+	<br/><br/>
+	</div>
+	<br/>
+	<div class="nologin_footer clearfix">
+	<div class="col-sm-offset-1 col-sm-5">
+		<i class="footer_logo"></i>
+		<em class="company_name">服务器维护及网站建设</em>
+	</div>
+	<div class="col-md-5 column">
+		<span>Copyright © 2017-5 WEIBO</span>
+				<select id="pl_content_changeLanguage" action-data="login=0">
+			<option selected="selected" value="zh-cn">中文(简体)</option>
+			<option  value="zh-tw">中文(台湾)</option>
+			<option  value="zh-hk">中文(香港)</option>
+			<option  value="en-us">English</option>
+		</select>
+	</div>
+    </div>
+   </div>
+   
+ <!------------------------------js部分--------------------------------------------------->
+   <script>
+     $(document).ready(function(){		
+	//--------------------------验证输入类型是否符合要求	
+		var v = $('#reg-form').easyform();
+
+        v.is_submit = false;
+
+        v.error = function (ef, i, r)
+        {
+            //console.log("Error事件：" + i.id + "对象的值不符合" + r + "规则");
+        };
+
+        v.success = function (ef)
+        {
+            //console.log("成功");
+        };
+
+        v.complete = function (ef)
+        {
+            console.log("完成");
+        };
+		
+	//-----------------------ajax用于判断用户名是否被占用--------------------------------------
+		function ajax()
+      {
+     var nameElement=document.getElementsById("name")[0];
+      //为昵称选项注册onblur事件
+      nameElement.onblur=function()
+      {
+        var name=this.value;
+        //1.获取XMLHttpRequest对象
+        var req=getXMLHttpRequest();
+        //4.处理响应结果
+        req.onreadystatechange=function(){
+          if(req.readyState==4){//XMLHttpRequest对象读取成功
+            if(req.status==200){//服务器相应正常
+              var msg=document.getElementById("msg");
+              //根据返回的结果显示不同的信息
+              if(req.responseText=="true"){
+                msg.innerHTML="<font color='red'>该昵称已注册</font>";
+              }else{
+                msg.innerHTML="<font color='green'>可以使用</font>";
+              }
+            }
+          }
+        }
+        //2.建立一个连接
+        req.open("get","${pageContext.request.contextPath}/servlet/checkUserServlet?name="+name);
+        //3.发送get请求
+        req.send(null);
+       }
+     }
+   });
+		
+		
+	//--------------------------向后台传输数据接收数据	
+		$(#register).click(function(){
+		   type:"POST",
+		   url://---------------------------------处理表单信息的页面，需要你们填写
+		   async:true,
+		   data:{email:$("#email").val(),nickname:$("#name").val(),pwd:$("#psw1").val(),dscip:$("#dscip").val()},
+		   success:function(data){
+		       var types=data;
+			   if(types.toString()!="注册成功") {
+			      alert("注册成功！您已进入个人首页")；
+				}
+		        window.location.href="http://localhost/personal_home.html";
+		       },
+		   error:function(){
+		       alert("注册失败，请重新输入！");
+		    }
+		});
+   </script>
+
+</body>
+
+</html>

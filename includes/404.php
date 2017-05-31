@@ -1,5 +1,7 @@
+<nav class="navbar navbar-default navbar-fixed" role="navigation">
 <?php get_header(); ?>
-	
+</nav>
+<?php echo $url_path; ?>
 
 <div class="container">
 	<div class="row clearfix">

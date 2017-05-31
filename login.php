@@ -1,3 +1,4 @@
+
 <?php 
 // 引入工具函数等
 require_once('functions.php');

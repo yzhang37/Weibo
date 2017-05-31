@@ -8,6 +8,25 @@
    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    <script type="text/javascript" src="js/jQuery-cookie.js"></script>
    <link href="styles/weibo.css" type="text/css" rel="stylesheet" />
+      <script type="text/javascript">
+       function res(){
+  	var content = prompt("请输入要回复的内容","内容");
+  	$.ajax({
+             type: "POST",
+             url:"url",//-------------------------------------------------------需要填写php的URL
+			 async: false,
+             data: {"username":$.cookie("username"),"request":"comment","message":$("#message").val(),"content":content},//给服务器端传递用户昵称，类型为json,传递的类型需要和后台协商，这里给出必要3项：评论用户名称、请求类型、被评论微博id、评论内容
+			 dataType:"text",//需要传递回确认信息
+             success: function(){
+			   window.location.reload();//刷新页面
+				}
+			 error: function(){
+			 alert("回复失败！");
+			 }
+         });
+
+  };
+  </script>
 	<script>
 	$(document).ready(function(){
 		if($.cookie("username"))  $("#username").text($.cookie("username"));//导航栏中的用户名字段设置为当前登录用户名
@@ -127,6 +146,7 @@
 				<div class="col-md-2 column">
 				 
 					<ul class="nav nav-tabs nav-stacked" style="position:fixed;width:170px;top:60px;font-size:15px;background-color:#E8E8E8;opacity:0.5;">
+					<!-------需要填充超链接---->
 								<li>
 									 <a href="http://localhost:81/weibo/weibo.html" ><span class="glyphicon glyphicon-home" style="color: rgb(0,0,0);"> 首页</span></a>
 								</li>
@@ -219,7 +239,7 @@
 				<div class="col-md-12 column">
 				<div class="col-md-9 column"></div>
 						<div class="col-md-3 column"><div class="txt">
-						<span class="glyphicon glyphicon-edit"></span><a id="response">回复</a></span>&nbsp;
+						<span class="glyphicon glyphicon-edit"></span><a href="javascript:;" onclick="res()">回复</a></span>&nbsp;
 						</div>						
 				</div>
 			</div>
