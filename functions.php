@@ -2,10 +2,8 @@
 session_start();
 require_once('sql_connect.php');	//加载数据库信息
 require_once('./php-tools/tools-require.php');	
-
 // cookie保存时间
 define("COOKIETIME", 3600*12);
-
 // 页首拼装组件
 function get_header(){
 	global $page_script, $page_css;
@@ -15,46 +13,30 @@ function get_header(){
 function get_footer(){
 	require_once('./footer.php');
 }
-function get_common_page(){
-	require_once('./common_page.php');
-}
-
-function getUserInfo($uid, $pwd){
-	$query = mysql_query("SELECT uid, pwd FROM user WHERE user_id='$uid' AND pw='$pwd'") or die('');
+function getUserInfo($mail, $pwd){
+	$query = mysql_query("SELECT mail, pwd FROM user WHERE mail='$mail' AND pwd='$pwd'") or die('');
 	// 判断信息是否正确
 	$userinfo = array();
 	if($row = mysql_fetch_array($query)){
 		$userinfo = array(
-			'uid' => $uid,
+			'mail' => $mail,
 			'pwd' => $pwd
 		);
 	}return $userinfo;
 }
-
-function getUserInfoWithEmail($mail, $pwd)
-{
-	$query = mysql_query("SELECT uid, pwd FROM user WHERE mail='$mail'") or die('');
-	
-	$userinfo = array();
-	$log_count = mysql_num_rows($query);
-	if ($log_count = 1)
-	{
-		$userinfo = array(
-			'uid' => mysql_field_name($query, 0),
-			'pwd' => mysql_field_name($query, 1)
-		);
-	}
-	return $user_info; 
+function get_full_user_info($user_mail){
+	$query = mysql_query("SELECT * FROM user WHERE mail='$user_mail'") or die('');
+	$row = mysql_fetch_array($query);
+	return $row;
 }
-
 // 检查用户是否登录
 // 返回值为false为未登录，返回值为ture为已登录
 function checklogin(){
     if(empty($_SESSION['user_info'])){    //检查一下已建立会话状态
-    	if(empty($_COOKIE['uid']) || empty($_COOKIE['pwd'])){  //会话与COOKIE皆无，需要登陆
+    	if(empty($_COOKIE['mail']) || empty($_COOKIE['pwd'])){  //会话与COOKIE皆无，需要登陆
     		$tag = false;
 		}else{   //当前已有用户COOKIE  
-    		$user = getUserInfo($_COOKIE['uid'],$_COOKIE['pwd']);   //检验COOKIE有效性
+    		$user = getUserInfo($_COOKIE['mail'],$_COOKIE['pwd']);   //检验COOKIE有效性
 			if(empty($user)){    //COOKIE失效，需登陆
 				$tag = false;
 			}else{  //COOKIE有效，更新会话状态
@@ -66,22 +48,20 @@ function checklogin(){
 	
 	return $tag;
 }
-
 // 退出登录  
 // 调用此函数清理session和cookie中的用户登陆信息
 // 返回true为确认登出成功，false为登出失败
 function logout()
 {
 	unset ( $_SESSION['user_info'] );
-    if (! empty ( $_COOKIE ['uid'] ) || ! empty ( $_COOKIE ['pwd'] ))   
+    if (! empty ( $_COOKIE ['mail'] ) || ! empty ( $_COOKIE ['pwd'] ))   
     {  
-        setcookie ( "uid", null, time () - COOKIETIME );  
+        setcookie ( "mail", null, time () - COOKIETIME );  
         setcookie ( "pwd", null, time () - COOKIETIME );  
     }
     session_destroy();
-    if(empty($_SESSION['user_info']) && empty($_COOKIE['uid']) && empty($_COOKIE['pwd']))
+    if(empty($_SESSION['user_info']) && empty($_COOKIE['mail']) && empty($_COOKIE['pwd']))
     	return true;
     else return false;
-}  
-
+}
 ?>

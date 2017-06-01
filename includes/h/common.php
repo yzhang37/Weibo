@@ -1,4 +1,3 @@
-
 <?php get_header(); ?>
-<?php get_common_page()?>
+<?php require_once('./includes/h/common_page.php'); ?>
 <?php get_footer();?>

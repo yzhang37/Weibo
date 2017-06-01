@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />  
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />  
-	<title>微博</title>
+	<title>weibo-发现好玩有趣的事情</title>
 	
 	<link rel="stylesheet" type="text/css" href='https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css' />
 	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
@@ -14,40 +14,18 @@
 	<script type="text/javascript" src='https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 	<script type="text/javascript" src='/js/plugin.js'></script>
 	<script type="text/javascript" src="/js/main.js"></script>
+	<script type="text/javascript" src="/js/login.js"></script>
 	<?php if ( !empty ($page_script) ) echo '<script type="text/javascript" src="'.$page_script.'"></script>';?>
+   <script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+   <script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+   <link href="../styles/weibo.css" type="text/css" rel="stylesheet" />
+   <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+   <script src="http://cdn.static.runoob.com/libs/jquery/2.0.0/jquery.min.js"></script>
+   <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 	
 </head>
 <body>
-<!--
-<nav class="navbar navbar-default navbar-fixed" role="navigation">
-
-  <div class="container-fluid">
-    <div class="navbar-header">
-
-      <a class="navbar-brand" href="#">WEIBO</a>
-
-    </div>
-    <?php if( checklogin() == false ){?>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
-      <li class="dropdown">
-      	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> 登录</a>
-      	<ul class="dropdown-menu">
-      		<div id="user_login" class="form-group">
-      			<li><label>邮箱</label><input name="log_mail" type="text"/></li>
-      			<li><label>密码</label><input name="log_pwd" type="text"/></li>
-      			<li><button class="btn btn-default" name="submit">登陆</button></li>
-      		</div>
-      	</ul>
-      </li>
-    </ul>
-    <?php } else {?>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#" id="user_logout"><span class="glyphicon glyphicon-log-out"></span> 登出</a></li>
-    </ul>
-    <?php }?>
-  </div>
--->
 <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
@@ -64,14 +42,17 @@
 						</div> <button type="submit" class="btn btn-default">搜索</button>
 					</form>
 					<ul class="nav navbar-nav navbar-right">
+					<?php
+					   if (checklogin() == false) {
+					?>
 						<li class="active">
-							 <a href="http://localhost/index.php"><span class="glyphicon glyphicon-home" style="color: rgb(0,0,0);"> 首页</span></a>
+							 <a href="/"><span class="glyphicon glyphicon-home" style="color: rgb(0,0,0);"> 首页</span></a>
 						</li>
 						<li>
-							 <a href="http://localhost/index.php"><span class="glyphicon glyphicon-user" style="color: rgb(0,0,0);"> 登录</span></a>
+							 <a href="/"><span class="glyphicon glyphicon-user" style="color: rgb(0,0,0);"> 登录</span></a>
 						</li>
 						<li>
-							 <a href="http://localhost/sign.html"><span class="glyphicon glyphicon-tower" style="color: rgb(0,0,0);"> 注册</span></a>
+							 <a href="/sign.html"><span class="glyphicon glyphicon-tower" style="color: rgb(0,0,0);"> 注册</span></a>
 						</li>
 						<li class="dropdown">
 							 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-leaf" style="color: rgb(0,0,0);"> 关于我们</span><strong class="caret"></strong></a>
@@ -85,6 +66,46 @@
 								<li>
 									 <a href="#">更多设置</a>
 								</li>
+							<?php } else { ?>
+							<li class="active">
+                             <a href="/"><span class="glyphicon glyphicon-home" style="color: rgb(0,0,0);"> 首页</span></a>
+                        </li>
+                        <li>
+                             <a href="#"><span class="glyphicon glyphicon-film" style="color: rgb(0,0,0);"> 视频</span></a>
+                        </li>
+                        <li>
+                             <a href="#"><span class="glyphicon glyphicon-user" style="color: rgb(0,0,0);">用户名我是weibo</span></a><!--需要显示用户名-->
+                        </li>
+                        <li>
+                             <a href="/"><span class="glyphicon glyphicon-user" style="color: rgb(0,0,0);">退出</span></a><!--需要显示用户名-->
+                        </li>
+                        <li class="dropdown">
+                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" style="color: rgb(0,0,0);">设置</span><strong class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                     <a href="#">账号设置</a>
+                                </li>
+                                <li>
+                                     <a href="#">会员中心</a>
+                                </li>
+                                <li>
+                                     <a href="#">V认证</a>
+                                </li>
+                                <li>
+                                     <a href="#">隐私设置</a>
+                                </li>
+                                <li>
+                                     <a href="#">屏蔽设置</a>
+                                </li>
+                                <li>
+                                     <a href="#">消息设置</a>
+                                </li>
+                                <li>
+                                     <a href="#">帮助中心</a>
+                                </li>
+                            </ul>
+                        </li>
+							<?php } ?>
 							</ul>
 						</li>
 					</ul>
