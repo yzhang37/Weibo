@@ -3,6 +3,7 @@ $(function(){ main.init(); });
 var main = {
 	init: function(){
 		this.login(),
+		this.loginWithEmail(),
 		this.logout()
 	},
 	login: function(){
@@ -25,7 +26,8 @@ var main = {
 	//使用 e-mail 登录，而不是使用 uid 登录
 	loginWithEmail: function(){
 		var user_login = $("#user_login");
-		$("#user_login button[name='log_submit']").click(function(){
+		user_login.find("button[name='log_submit']").click(function(){
+			//alert('1');
 			var mail = user_login.find("input[name='log_email']").val();
 			var pwd = user_login.find("input[name='log_pwd']").val();
 			$.ajax({

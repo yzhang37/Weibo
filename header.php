@@ -65,14 +65,21 @@
 					</form>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="active">
-							 <a href="http://localhost/index.php"><span class="glyphicon glyphicon-home" style="color: rgb(0,0,0);"> 首页</span></a>
+							 <a href="#" id="top_search"><span class="glyphicon glyphicon-home" style="color: rgb(0,0,0);"> 首页</span></a>
+						</li>
+						
+						<?php if (checklogin() == false) {?>
+						<li>
+							 <a href="#" id="top_user_login"><span class="glyphicon glyphicon-user" style="color: rgb(0,0,0);"> 登录</span></a>
 						</li>
 						<li>
-							 <a href="http://localhost/index.php"><span class="glyphicon glyphicon-user" style="color: rgb(0,0,0);"> 登录</span></a>
+							 <a href="#" id="top_user_register"><span class="glyphicon glyphicon-tower" style="color: rgb(0,0,0);"> 注册</span></a>
 						</li>
+						<?php } else {?>
 						<li>
-							 <a href="http://localhost/sign.html"><span class="glyphicon glyphicon-tower" style="color: rgb(0,0,0);"> 注册</span></a>
+							 <a href="#" id="top_user_logout"><span class="glyphicon glyphicon-log-out" style="color: rgb(0,0,0);"> 注销</span></a>
 						</li>
+						<?php }?>
 						<li class="dropdown">
 							 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-leaf" style="color: rgb(0,0,0);"> 关于我们</span><strong class="caret"></strong></a>
 							<ul class="dropdown-menu">

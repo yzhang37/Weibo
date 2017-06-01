@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>weibo-发现好玩有趣的事情</title>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
    <script src="http://cdn.static.runoob.com/libs/jquery/2.0.0/jquery.min.js"></script>
@@ -9,8 +8,6 @@
    <script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    <link href="styles/weibo.css" type="text/css" rel="stylesheet" />
-   
- <!--登录的数据传递，数据格式为json,你们看一下能不能用-->
 <script>
 $(document).ready(function(){
   $('#login').click(function(){

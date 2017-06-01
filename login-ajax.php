@@ -27,7 +27,6 @@ if( $action == 'login' ){
 	$mail = $_POST['mail'];
 	$pwd = $_POST['pwd'];
 	$remember = 1;
-	
 	// 判断信息是否正确
 	$user = getUserInfoWithEmail($mail ,$pwd);
 	if(! empty ( $user ) ) {
