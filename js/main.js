@@ -3,6 +3,7 @@ $(function(){ main.init(); });
 var main = {
 	init: function(){
 		this.login(),
+		this.loginWithEmail(),
 		this.logout()
 	},
 	login: function(){
