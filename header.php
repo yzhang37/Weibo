@@ -70,7 +70,7 @@
 						
 						<?php if (checklogin() == false) {?>
 						<li>
-							 <a href="#" id="top_user_login"><span class="glyphicon glyphicon-user" style="color: rgb(0,0,0);"> 登录</span></a>
+							 <a href="#" id="top_user_login"><span class="glyphicon glyphicon-log-in" style="color: rgb(0,0,0);"> 登录</span></a>
 						</li>
 						<li>
 							 <a href="#" id="top_user_register"><span class="glyphicon glyphicon-tower" style="color: rgb(0,0,0);"> 注册</span></a>
