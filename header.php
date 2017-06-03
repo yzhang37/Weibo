@@ -1,3 +1,6 @@
+<?php 
+	header("Content-type: text/html; charset:utf-8");
+?>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
@@ -22,7 +25,6 @@
    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
    <script src="http://cdn.static.runoob.com/libs/jquery/2.0.0/jquery.min.js"></script>
    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 	
 </head>
 <body>
@@ -73,18 +75,23 @@
 								<li>
 									 <a href="#">更多设置</a>
 								</li>
-							<?php } else { ?>
+							<?php } else {
+								$email = $_SESSION['user_info']['mail'];
+								$userdata = get_full_user_info($email);
+								 ?>
 							<li class="active">
-                             <a href="/"><span class="glyphicon glyphicon-home" style="color: rgb(0,0,0);"> 首页</span></a>
+                             <a href="/"><span class="glyphicon glyphicon-home" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">首页</span></span></a>
                         </li>
                         <li>
-                             <a href="#"><span class="glyphicon glyphicon-film" style="color: rgb(0,0,0);"> 视频</span></a>
+                             <a href="#"><span class="glyphicon glyphicon-film" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">视频</span></span></a>
                         </li>
                         <li>
-                             <a href="#"><span class="glyphicon glyphicon-user" style="color: rgb(0,0,0);">用户名我是weibo</span></a><!--需要显示用户名-->
+                             <a href="#"><span class="glyphicon glyphicon-user" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;"><?php
+                             	echo $userdata['nname'];
+                             	?></span></span></a><!--需要显示用户名-->
                         </li>
                         <li>
-                             <a href="/"><span class="glyphicon glyphicon-user" style="color: rgb(0,0,0);">退出</span></a><!--需要显示用户名-->
+                             <a href="/"><span class="glyphicon glyphicon-user" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">退出</span></span></a><!--需要显示用户名-->
                         </li>
                         <li class="dropdown">
                              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" style="color: rgb(0,0,0);">设置</span><strong class="caret"></strong></a>
