@@ -46,11 +46,7 @@ function get_full_user_info($user_mail){
 	return $row;
 }
 
-function get_user_follow() {
-	$userdata = get_full_user_info($email);
-	$query = mysql_query("(SELECT fo_id FROM follow WHERE fa_id = '$userdata['user_id']')") or die('');
-	
-}
+
 function is_new_email($user_mail)
 {
 	$query = mysql_query("SELECT * FROM user WHERE mail='$user_mail'") or die('');

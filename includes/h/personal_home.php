@@ -80,45 +80,19 @@
 
 
 <!----------------------------------------------一条消息------------------------------------------->
-	 <div class="row clearfix" style="background-color:white;position:relative;">
-		<div class="col-md-12 column">
-			<!-----------------------------------头像和名称------------------------------------>			
-			<div class="row clearfix">
-				<div class="col-md-8 column">
-					<div class="media">
-						 <a href="#" class="pull-left" target="_blank"><img src="images/weibo.jpg" class="media-object" style="border-radius:50%;width:80px;height:80px;" alt='' /></a>
-						<div class="media-body">
-							<a href="#" target="_blank"><h4 class="media-heading">
-								我是weibo
-							</h4></a>
-							<p id="time" class="txt" style="text-align:left;font-size:12px;color:#B3B3B3">5月24日 16:20</p>
-							<p id="descrip">一个乐于发现好玩有趣事物的新新人类</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-1 column"></div>
-			</div>
-			<!------------------------------------中间消息主体------------------------------>
-			<div class="row clearfix">
-				<div class="col-md-12 column">
-				<!---------------------------文字部分------------------------->
-					<div class="txt" style="font-family:sans-serif;">#今天你吃了什么#
-						今天我吃了好多喜欢的
-					</div></br>
-				</div>
-			</div>
-			<!---------------------------------------下面的转发、评论、点赞--------------------------------------->
-			<div class="row clearfix">
-				<div class="col-md-12 column">
-				<div class="col-md-9 column"></div>
-						<div class="col-md-3 column"><div class="txt">
-						<span class="glyphicon glyphicon-edit"></span>57935</span>&nbsp;
-						<span class="glyphicon glyphicon-thumbs-up"></span>123588</span></div>
-						</div>						
-				</div>
-			</div>
-		</div>
-	</div><br/>
+	<div class="col-md-7 column" style="position:relative;top:60px;">
+					<!-----------------------------------------------------消息展示调用模板（模板代码在php-tool/mod-format.php里）---------------------------------------------->
+					<?php 
+					//$get_query=mysql_query("CALL server_roomtype_info");
+						$query = mysql_query("SELECT * FROM user NATURAL JOIN 
+							(SELECT * FROM publish WHERE msg_type <> 2 ORDER BY time DESC) AS top10
+								NATURAL JOIN message ORDER BY time DESC");
+						while ($row=mysql_fetch_array($query)) {
+							display_weibo_single($row);
+						}		
+					?>
+				<!--------------------------------------------------------------消息展示结束（分页加载）------------------------------------------->
+	</div>
 <!------------------------------------------------------------消息结束----------------------------------------------------------->
 
 
