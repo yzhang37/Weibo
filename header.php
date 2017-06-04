@@ -18,7 +18,6 @@
 	<script type="text/javascript" src='https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 	<script type="text/javascript" src='/js/plugin.js'></script>
 	<script type="text/javascript" src="/js/main.js"></script>
-	<script type="text/javascript" src="/js/login.js"></script>
 	<?php if ( !empty ($page_script) ) echo '<script type="text/javascript" src="'.$page_script.'"></script>';?>
    <script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
    <script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>

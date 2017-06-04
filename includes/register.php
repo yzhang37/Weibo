@@ -15,9 +15,7 @@ if (checklogin() == true)
 get_header(); 
 ?>
 </nav>
-<head>
     <script src="js/easyform/easyform.js"></script>
-    <script type="text/jscript" src="../js/register.js"></script>
 	<link rel="stylesheet" href="css/platform-1.css">
     <link rel="stylesheet" href="js/easyform/easyform.css">
     <link rel="stylesheet" href="css/tab.css">
@@ -28,9 +26,6 @@ get_header();
     		color: red;
     	}    	
     </style> 
-</head>
-
-<body style="background-color:#ffffcc;"background="images/body_bg.jpg">
 <!-------------------------------------------------页面整体--------------------------------------------------->
 <div class="container">
 	<div class="row clearfix">
@@ -100,7 +95,7 @@ get_header();
 					  </div>
                 </div>
 				<div class="buttons">
-					<button class="btn btn-primary" name="reg_submit" style="margin-right:20px; margin-top:20px;">注册</button>
+					<button class="btn btn-primary" id="reg_submit" name="reg_submit" style="margin-right:20px; margin-top:20px;">注册</button>
 				</div>
 			</form>
 		</div>		

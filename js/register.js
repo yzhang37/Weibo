@@ -2,18 +2,20 @@ function warning(fieldname, txt){
 	$("#"+fieldname).show().html(txt);
 }
 
-jQuery(function($)
-{
-	$("#register_form button[name='reg_submit']").off().on("click",
-		function()
-		{
+jQuery(function($) {
+	$("#reg_submit").click(function(){
 			//alert('测试');
+
 			$.ajax({
 				type: "POST",
 				url: "/login-ajax.php",
 				cache: false,
 				data: $('#register_form').serialize()+"&action=register",
 				success: function(msg) {
+					warning("warning_email", "");
+					warning("warning_nickname", "");
+					warning("warning_password", "");
+					warning("warning_passconf", "");
 					switch(msg) {
 						case "already_in_use":
 							warning("warning_email", "这个电子邮件已经被使用过了，更换一个");
@@ -41,6 +43,5 @@ jQuery(function($)
 				}
 			});
 			return false;
-		}
-	);
+	});
 });
