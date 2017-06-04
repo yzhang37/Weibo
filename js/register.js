@@ -4,27 +4,42 @@ function warning(fieldname, txt){
 
 jQuery(function($)
 {
-	$("register_form").submit(
+	$("reg_submit").click(
 		function()
 		{
-			
-		}
-		$.ajax({
-			type: "POST",
-			url: "/register-ajax.php",
-			cache: false,
-			data: $('#register_form').serialize()+"&action=register",
-			success: function(msg) {
-				switch(msg) {
-					case 'success':
-						window.location.reload();
-						break;
-					case 'error':
-						warning("用户名密码有误");
-						break;
+			alert('测试');
+			$.ajax({
+				type: "POST",
+				url: "/login-ajax.php",
+				cache: false,
+				data: $('#register_form').serialize()+"&action=register",
+				success: function(msg) {
+					switch(msg) {
+						case "already_in_use":
+							warning("warning_email", "这个电子邮件已经被使用过了，更换一个");
+							break;
+						case "no_nickname":
+							warning("warning_nickname", "还没有输入昵称哦");
+							break;
+						case "no_password":
+							warning("warning_password", "没有输入密码哦，必须输入密码才能注册帐户");
+							break;
+						case "invalid_password_length":
+							warning("warning_password", "密码长度不符合要求");
+							break;
+						case "dismatch_passconf":
+							warning("warning_passconf", "验证密码必须和上面的密码输入框内容一致");
+							break;
+						case "success":
+							window.location.reload();
+							break;
+						case "error":
+							warning("warning_email", "");
+							break;
+					}
 				}
-			}
-		});
-		return false;
+			});
+			return false;
+		}
 	);
 });

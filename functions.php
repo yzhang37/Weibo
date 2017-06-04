@@ -24,11 +24,36 @@ function getUserInfo($mail, $pwd){
 		);
 	}return $userinfo;
 }
+function directly_insert_user($mail, $pwd, $name, $mysign)
+{
+	$mail = "'".$mail."'";
+	$pwd = "'".$pwd."'";
+	$name = "'".$name."'";
+	if ( !isset($mysign) or empty($mysign) or strlen($mysign) == 0) {
+		$mysign = "NULL";
+	} else {
+		$mysign = "'".$mysign."'";
+	}
+	$result = mysql_query("INSERT INTO user (nname, mail, pwd, sign) VALUES ($name, $mail, $pwd, $mysign)");
+	return $result;
+}
+
+
 function get_full_user_info($user_mail){
 	$query = mysql_query("SELECT * FROM user WHERE mail='$user_mail'") or die('');
 	$row = mysql_fetch_array($query);
 	return $row;
 }
+function is_new_email($user_mail)
+{
+	$query = mysql_query("SELECT * FROM user WHERE mail='$user_mail'") or die('');
+	if(mysql_num_rows($query)==0) {
+		return true;
+	} else {
+		return false; 
+	}
+}
+
 // 检查用户是否登录
 // 返回值为false为未登录，返回值为ture为已登录
 function checklogin(){

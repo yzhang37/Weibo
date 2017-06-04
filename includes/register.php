@@ -16,6 +16,7 @@ get_header();
 </nav>
 <head>
     <script src="js/easyform/easyform.js"></script>
+    <script type="text/jscript" src="../js/register.js"></script>
 	<link rel="stylesheet" href="css/platform-1.css">
     <link rel="stylesheet" href="js/easyform/easyform.css">
     <link rel="stylesheet" href="css/tab.css">
@@ -82,7 +83,7 @@ get_header();
 				<div class="form-group" >
 					 <label class="col-sm-3 control-label" for="inputPassword3"style="float:left">* 再次输入密码</label>
 					<div class="col-sm-7">
-						<input class="form-control" type="password" id="reg_pwdconf" name="reg_pwdconfplaceholder="两次密码输入要一致"
+						<input class="form-control" type="password" id="reg_pwdconf" name="reg_pwdconf" placeholder="两次密码输入要一致"
                           data-easyform="equal:#psw1;real-time"
                           data-message="两次密码输入要一致" 
 						  data-easytip="position:right;class:easy-blue;"
@@ -91,9 +92,10 @@ get_header();
 					</div>
 				</div>
                 <div class="form-group">
-                    <label class="col-sm-3"for="name">一句话描述自己</label>
+                    <label class="col-sm-3" for="name">一句话描述自己</label>
                       <div class="col-sm-7">
 					  <textarea id="reg_sign" class="form-control" rows="3" name="reg_sign" placeholder="我是...."></textarea>
+					 
 					  </div>
                 </div>
 				<div class="buttons">
