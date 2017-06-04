@@ -129,18 +129,18 @@ function display_common_home_login(){
 	          <div class="form-group">
 		         <label for="inputEmail3" class="col-sm-3 control-label" >邮箱</label>
 		         <div class="col-sm-9">
-			     <input class="form-control" id="mail"/>
+			     <input class="form-control" id="log_mail"/>
 		   </div>
 	          </div>
 	  <div class="form-group">
 		 <label for="inputPassword3" class="col-sm-3 control-label">密码</label>
 		<div class="col-sm-9">
-			<input class="form-control"  id="pwd" type="password" />
+			<input class="form-control" id="log_pwd" type="password" />
 		</div>
 	  </div>
 	  <div class="form-group">
 		<div class="col-sm-offset-4 col-sm-6">
-			 <button id="login" type="submit" class="btn btn-default">登录</button>
+			 <button id="log_login" type="submit" class="btn btn-default">登录</button>
 		</div>
 	  </div>
     </div>

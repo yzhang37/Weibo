@@ -14,7 +14,7 @@ function get_footer(){
 	require_once('./footer.php');
 }
 function getUserInfo($mail, $pwd){
-	$query = mysql_query("SELECT mail, pwd FROM user WHERE mail='$mail' AND pwd='$pwd'") or die('');
+	$query = mysql_query("SELECT mail, pwd FROM user WHERE LOWER(mail)='$mail' AND pwd='$pwd'") or die('');
 	// 判断信息是否正确
 	$userinfo = array();
 	if($row = mysql_fetch_array($query)){

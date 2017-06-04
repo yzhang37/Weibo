@@ -3,10 +3,8 @@
 		background: url("http://wx3.sinaimg.cn/mw1024/869f1348ly1fg5sdb5qkaj218g0pa75d.jpg");
 	}
 </style>
-
+<script type="text/javascript" src="../../js/login.js"></script> 
 <!-----------------------------------------------------------------头部------------------不需要写PHP，但是有搜索看情况是否有关键字搜索并显示--------------------------------->
-
-
 
 <div class="container" style="background-color:rgba(36,61,89,0.25);">
 

@@ -1,6 +1,7 @@
 <?php 
 	header("Content-type: text/html; charset:utf-8");
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
@@ -48,21 +49,17 @@
 					   if (checklogin() == false) {
 					?>
 						<li class="active">
-							 <a href="/"><span class="glyphicon glyphicon-home" style="color: rgb(0,0,0);"> 首页</span></a>
-						</li>
-						
-						<?php if (checklogin() == false) {?>
-						<li>
-							 <a href="/"><span class="glyphicon glyphicon-user" style="color: rgb(0,0,0);"> 登录</span></a>
+							 <a href="/"><span class="glyphicon glyphicon-home" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">首页</span>
+							 	</span></a>
 						</li>
 						<li>
-							 <a href="/sign.html"><span class="glyphicon glyphicon-tower" style="color: rgb(0,0,0);"> 注册</span></a>
+							 <a href="/login"><span class="glyphicon glyphicon-log-in" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">登录</span>
+							 </span></a>
 						</li>
-						<?php } else {?>
 						<li>
-							 <a href="#" id="top_user_logout"><span class="glyphicon glyphicon-log-out" style="color: rgb(0,0,0);"> 注销</span></a>
+							 <a href="/register"><span class="glyphicon glyphicon-tower" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">注册</span>
+							 </span></a>
 						</li>
-						<?php }?>
 						<li class="dropdown">
 							 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-leaf" style="color: rgb(0,0,0);"> 关于我们</span><strong class="caret"></strong></a>
 							<ul class="dropdown-menu">
@@ -91,10 +88,11 @@
                              	?></span></span></a><!--需要显示用户名-->
                         </li>
                         <li>
-                             <a href="/"><span class="glyphicon glyphicon-user" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">退出</span></span></a><!--需要显示用户名-->
+                             <a href="javascript:void(0);" id="user_logout"><span class="glyphicon glyphicon-log-out" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">退出</span></span></a><!--需要显示用户名-->
                         </li>
                         <li class="dropdown">
-                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" style="color: rgb(0,0,0);">设置</span><strong class="caret"></strong></a>
+                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                             	<span class="glyphicon glyphicon-cog" style="color: rgb(0,0,0);">设置</span><strong class="caret"></strong></a>
                             <ul class="dropdown-menu">
                                 <li>
                                      <a href="#">账号设置</a>

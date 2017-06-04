@@ -10,6 +10,9 @@ require_once('config.php');
 get_header(); 
 ?>
 </nav>
+<head>
+	<script type="text/javascript" src="js/login.js"></script>
+</head>
 <div class="container login">
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
@@ -32,8 +35,5 @@ get_header();
         </div>
     </div>
 </div>
-
-
-
 
 <?php get_footer(); ?>

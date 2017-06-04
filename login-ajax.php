@@ -5,7 +5,7 @@ require_once('/functions.php');
 $action = $_POST['action'];
 
 if( $action == 'login' ){
-	$mail = $_POST['mail'];
+	$mail = strtolower($_POST['mail']);
 	$pwd = $_POST['pwd'];
 	$remember = 1;
 	//$remember = $_POST['log_rmb'];
