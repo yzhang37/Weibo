@@ -3,7 +3,6 @@ $(function(){ login.init(); });
 var login = {
 	init: function(){
 		this.login(),
-		//this.logout_ajax(),
 		this.logout()
 	},
 	login: function(){
@@ -52,7 +51,6 @@ var login = {
 		});
 	},
 }
-
 function logout_ajax()
 {
 	$.ajax({

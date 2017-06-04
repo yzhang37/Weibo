@@ -306,9 +306,10 @@ function display_fan_fo_msg_cnt(){
             <tr><td id="descrip" style="height:30px"></td></tr></table>
 			<table style="margin-left:30px;">
             <tr>
-              <td id="num_folllow" style="width:90px;height:20px;"><?php?></td>
-              <td id="num_fans" style="width:90px;height:20px;"><?php?></td>
-              <td id="num_weibo" style="width:90px;height:20px;"><?php?></td>
+            	<?php $userdata = get_full_user_info($_COOKIE['mail']);?>
+              <td id="num_folllow" style="width:90px;height:20px;"><?php echo $userdata['fo_cnt']?></td>
+              <td id="num_fans" style="width:90px;height:20px;"><?php echo $userdata['fa_cnt']?></td>
+              <td id="num_weibo" style="width:90px;height:20px;"><?php echo $userdata['msgs_cnt']?></td>
             </tr>
             <tr>
                <td style="width:80px;height:20px;">关注</td>
