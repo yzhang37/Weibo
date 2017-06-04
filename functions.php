@@ -14,6 +14,7 @@ function get_footer(){
 	require_once('./footer.php');
 }
 function getUserInfo($mail, $pwd){
+	$mail = strtolower($mail);
 	$query = mysql_query("SELECT mail, pwd FROM user WHERE LOWER(mail)='$mail' AND pwd='$pwd'") or die('');
 	// 判断信息是否正确
 	$userinfo = array();
@@ -43,6 +44,12 @@ function get_full_user_info($user_mail){
 	$query = mysql_query("SELECT * FROM user WHERE mail='$user_mail'") or die('');
 	$row = mysql_fetch_array($query);
 	return $row;
+}
+
+function get_user_follow() {
+	$userdata = get_full_user_info($email);
+	$query = mysql_query("(SELECT fo_id FROM follow WHERE fa_id = '$userdata['user_id']')") or die('');
+	
 }
 function is_new_email($user_mail)
 {
