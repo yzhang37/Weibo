@@ -46,6 +46,17 @@ function get_full_user_info($user_mail){
 	return $row;
 }
 
+function display_follow_msg() {
+	$email = $_COOKIE['mail'];
+	$userdata = get_full_user_info($email);
+	$uid = $userdata['user_id'];
+	$query = mysql_query("SELECT * FROM ( ((SELECT * FROM publish WHERE user_id = '$uid' OR user_id IN (SELECT fo_id FROM follow WHERE fa_id = '$uid' ORDER BY time DESC) )AS FO 
+	NATURAL JOIN message) NATURAL JOIN user) ORDER BY time DESC ") or die('');
+	while ($row=mysql_fetch_array($query)) {
+		display_weibo_single($row);
+	}
+}
+
 
 function is_new_email($user_mail)
 {

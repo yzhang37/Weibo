@@ -80,19 +80,11 @@
 
 
 <!----------------------------------------------一条消息------------------------------------------->
-	<div class="col-md-7 column" style="position:relative;top:60px;">
 					<!-----------------------------------------------------消息展示调用模板（模板代码在php-tool/mod-format.php里）---------------------------------------------->
 					<?php 
-					//$get_query=mysql_query("CALL server_roomtype_info");
-						$query = mysql_query("SELECT * FROM user NATURAL JOIN 
-							(SELECT * FROM publish WHERE msg_type <> 2 ORDER BY time DESC) AS top10
-								NATURAL JOIN message ORDER BY time DESC");
-						while ($row=mysql_fetch_array($query)) {
-							display_weibo_single($row);
-						}		
+					display_follow_msg();		
 					?>
 				<!--------------------------------------------------------------消息展示结束（分页加载）------------------------------------------->
-	</div>
 <!------------------------------------------------------------消息结束----------------------------------------------------------->
 
 
