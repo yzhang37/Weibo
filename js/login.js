@@ -3,7 +3,7 @@ $(function(){ login.init(); });
 var login = {
 	init: function(){
 		this.login(),
-		this.logout_ajax(),
+		//this.logout_ajax(),
 		this.logout()
 	},
 	login: function(){
@@ -46,19 +46,6 @@ var login = {
 			}
 		});
 	},
-	logout_ajax: function()
-	{
-		$.ajax({
-				type: "POST",
-				url: "/login-ajax.php",
-				cache: false,
-				data: "action=logout",
-				success: function(msg){
-					alert(msg);
-					window.location.reload();
-				}
-			});
-	}
 	logout: function(){
 		$("#user_logout").click(function(){
 			logout_ajax();

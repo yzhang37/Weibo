@@ -58,7 +58,7 @@ elseif ( $action == 'register')
 			setcookie ( "mail", $mail, time() + COOKIETIME );
 			setcookie ( "pwd", $pwd, time() + COOKIETIME );
 		}
-		$_SESSION['user_info'] = $user;
+		$_SESSION['user_info'] = array('mail' => $mail, 'pwd' => $pwd);
 		echo "success";
 	}
 }

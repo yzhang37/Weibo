@@ -7,6 +7,7 @@ if (checklogin() == true)
 {
 	//当前已经登录了，那么直接跳转到用户界面
 	//TODO: 使用 AJAX 转到另一个页面
+	header('Location: /h/user');
 }
 ?>
 <nav class="navbar navbar-default navbar-fixed" role="navigation">
@@ -48,7 +49,7 @@ get_header();
     <div class="row clearfix">
 		<div class="col-md-8 column">
 <!--------------------------------下一行action里是提交表单后的处理程序--------------------------------------->
-			<form id="register_form" class="form-horizontal" role="form" method="POST" action="##">
+			<form id="register_form" class="form-horizontal">
 				<div class="form-group" >
 					<label class="col-sm-3 control-label" for="inputEmail3"style="float:left">* 输入邮箱</label>
 					<div class="col-sm-7">
@@ -99,7 +100,7 @@ get_header();
 					  </div>
                 </div>
 				<div class="buttons">
-					<input name="reg_submit" value="注册" type="submit" style="margin-right:20px; margin-top:20px;">
+					<button class="btn btn-primary" name="reg_submit" style="margin-right:20px; margin-top:20px;">注册</button>
 				</div>
 			</form>
 		</div>		

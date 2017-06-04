@@ -4,10 +4,10 @@ function warning(fieldname, txt){
 
 jQuery(function($)
 {
-	$("reg_submit").click(
+	$("#register_form button[name='reg_submit']").off().on("click",
 		function()
 		{
-			alert('测试');
+			//alert('测试');
 			$.ajax({
 				type: "POST",
 				url: "/login-ajax.php",
@@ -31,12 +31,13 @@ jQuery(function($)
 							warning("warning_passconf", "验证密码必须和上面的密码输入框内容一致");
 							break;
 						case "success":
-							window.location.reload();
+							window.location.href = '/h/user';
 							break;
 						case "error":
 							warning("warning_email", "");
 							break;
 					}
+					return true;
 				}
 			});
 			return false;
