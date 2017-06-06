@@ -95,7 +95,7 @@ get_header();
 					  </div>
                 </div>
 				<div class="buttons">
-					<button class="btn btn-primary" id="reg_submit" name="reg_submit" style="margin-right:20px; margin-top:20px;">注册</button>
+					<button type="button" class="btn btn-primary" id="reg_submit" name="reg_submit" style="margin-right:20px; margin-top:20px;">注册</button>
 				</div>
 			</form>
 		</div>		

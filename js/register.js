@@ -4,8 +4,13 @@ function warning(fieldname, txt){
 
 jQuery(function($) {
 	$("#reg_submit").click(function(){
-			//alert('测试');
-
+		//alert('测试');
+		var flag = 0;
+		if(!($("#reg_email").val().match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/ ))){
+			warning("warning_email", "你的邮箱格式不正确");
+			flag = 1;
+		}
+		if(flag == 0){
 			$.ajax({
 				type: "POST",
 				url: "/login-ajax.php",
@@ -42,6 +47,7 @@ jQuery(function($) {
 					return true;
 				}
 			});
-			return false;
+		}
+		return false;
 	});
 });
