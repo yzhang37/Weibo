@@ -10,6 +10,11 @@ if (checklogin() == true)
 	header('Location: /h/user');
 }
 ?>
+<style>
+	body {
+		background: url("http://wx3.sinaimg.cn/mw1024/869f1348ly1fg5sdb5qkaj218g0pa75d.jpg");
+	}
+</style>
 <nav class="navbar navbar-default navbar-fixed" role="navigation">
 	<?php
 get_header(); 

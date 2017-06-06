@@ -1,9 +1,12 @@
-
 <style>
 	body {
 		background: url("http://wx3.sinaimg.cn/mw1024/869f1348ly1fg5sdbiwr6j218g1jk0ys.jpg");
 	}
 </style>
+<script>
+	var gb_mail="<?php echo $_COOKIE['mail'];?>";
+</script>
+<script type="text/javascript" src="/js/message.js"></script>
 <div class="container" style="background-color:rgba(36,61,89,0.25);">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
@@ -62,9 +65,10 @@
 
 <!-----------------------------------------------------------------------消息发布-------------------------------------------------------------------->
     <div class="row clearfix" style="background-color:white;position:relative;">
-    <div class="input "><p>最近有什么新鲜事想告诉大家？</p>
-        <textarea id="textinput" style="height: 68px; width:660px; margin-left: 10px; margin-right: 10px;padding: 0px; border-style: 1px;font-size: 14px; overflow-wrap: break-word; line-height: 18px; overflow: hidden; outline: medium none;"></textarea>
-        <button id="publish" type="submit" class="btn btn-default" style="float:right;margin:10px;">发布</button>
+    <div class="input"><p>最近有什么新鲜事想告诉大家？</p>
+        <textarea class="form-control" id="msginput" style="height: 68px; width:660px; margin-left: 10px; margin-right: 10px;padding: 0px; border-style: 1px;font-size: 14px; overflow-wrap: break-word; line-height: 18px; overflow: hidden; outline: medium none;"></textarea>
+        <button id="msg-publish" type="submit" class="btn btn-default" style="float:right;margin:10px;">发布</button>
+        <label id="msg-warning" style="color: red; display: none;"></label>
         <form style="display:none;" node-type="extradata">
     		<input name="pollid" value="">
             <input name="pub_source" value="main_">
@@ -80,11 +84,13 @@
 
 
 <!----------------------------------------------一条消息------------------------------------------->
-					<!-----------------------------------------------------消息展示调用模板（模板代码在php-tool/mod-format.php里）---------------------------------------------->
-					<?php 
-					display_follow_msg();		
-					?>
-				<!--------------------------------------------------------------消息展示结束（分页加载）------------------------------------------->
+<!-----------------------------------------------------消息展示调用模板（模板代码在php-tool/mod-format.php里）---------------------------------------------->
+	<div id = "msg_module">
+		<?php 
+		display_follow_msg();		
+		?>
+	</div>
+<!--------------------------------------------------------------消息展示结束（分页加载）------------------------------------------->
 <!------------------------------------------------------------消息结束----------------------------------------------------------->
 
 
