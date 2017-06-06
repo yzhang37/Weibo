@@ -48,15 +48,15 @@
 					   if (checklogin() == false) {
 					?>
 						<li class="active">
-							 <a href="/"><span class="glyphicon glyphicon-home" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">首页</span>
+							 <a href="javascript: void(0);" onclick="window.location.href='/';"><span class="glyphicon glyphicon-home" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">首页</span>
 							 	</span></a>
 						</li>
 						<li>
-							 <a href="/login"><span class="glyphicon glyphicon-log-in" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">登录</span>
+							 <a href="javascript: void(0);" onclick="window.location.href='/login';"><span class="glyphicon glyphicon-log-in" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">登录</span>
 							 </span></a>
 						</li>
 						<li>
-							 <a href="/register"><span class="glyphicon glyphicon-tower" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">注册</span>
+							 <a href="javascript: void(0);" onclick="window.location.href='/register';"><span class="glyphicon glyphicon-tower" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">注册</span>
 							 </span></a>
 						</li>
 						<li class="dropdown">

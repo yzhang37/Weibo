@@ -106,7 +106,7 @@ get_header();
 		</div>		
 		<div class="col-md-4 column">
 			<p>
-				 已经有账号了吗？<a class="btn btn-default" href="/login">直接登录</a>
+				 已经有账号了吗？<a class="btn btn-default" href="javascript:void(0);" onclick="window.location.href='/login';">直接登录</a>
 			</p>
         <hr style="border:1px dotted #000; height:1px">
 		<p>weibo注册帮助</p>
