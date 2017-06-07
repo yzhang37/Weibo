@@ -77,16 +77,16 @@ function display_weibo_single($row){
 		<div class="row clearfix">
 			<div class="col-md-8 column">
 				<div class="media">
-					 <a href="#" class="pull-left" target="_blank"><img src="http://wx4.sinaimg.cn/mw1024/869f1348ly1fg5sdcjxhkj203c01cq36.jpg" class="media-object" style="border-radius:50%;width:80px;height:80px;" alt='' /></a>
+					 <a href="/h/personal_page/<?php echo $row['mail'];?>" class="pull-left" target="_blank"><img src="http://wx4.sinaimg.cn/mw1024/869f1348ly1fg5sdcjxhkj203c01cq36.jpg" class="media-object" style="border-radius:50%;width:80px;height:80px;" alt='' /></a>
 					<div class="media-body">
 						<a href="#" target="_blank"><h4 class="media-heading">
 							<?php echo $row['nname']?>
 						</h4></a>
-						<p id="time" class="txt" style="text-align:left;font-size:12px;color:#B3B3B3"><?php echo $row['time']?></p>
+						<p class="txt" style="text-align:left;font-size:12px;color:#B3B3B3"><?php echo $row['time']?></p>
 						<?php
 							if ($row['sign'] != NULL) {
 							?>
-							<p id="descrip"><?php echo $row['sign'] ?></p>
+							<p><?php echo $row['sign'] ?></p>
 						<?php } ?>
 					</div>
 				</div>
@@ -301,12 +301,12 @@ function display_fan_fo_msg_cnt(){
 <div class="row clearfix">
 		         <div class="col-md-12 column" style="width:280px;background-color:white;opacity:0.8;margin-top:40px;margin-left:10px;">
 			<table style="text-align:center">
-            <tr><td><a href="http://localhost/personal_page.html"><img id="head" src="" style="border-radius:50%;width:100px;height:100px;"/></td></tr>
-            <tr><td style="height:30px"><a id="username" href="http://localhost/personal_page.html"></a></td></tr>
+				<?php $userdata = get_full_user_info($_COOKIE['mail']);?>
+            <tr><td><a href="/h/personal_page"><img id="head" src="http://wx4.sinaimg.cn/mw1024/869f1348ly1fg5sdcjxhkj203c01cq36.jpg" style="border-radius:50%;width:100px;height:100px;"/></td></tr>
+            <tr><td style="height:30px"><a id="username" href="http://localhost/personal_page.html"></a><?php echo $userdata['nname']?></td></tr>
             <tr><td id="descrip" style="height:30px"></td></tr></table>
 			<table style="margin-left:30px;">
             <tr>
-            	<?php $userdata = get_full_user_info($_COOKIE['mail']);?>
               <td id="num_folllow" style="width:90px;height:20px;"><?php echo $userdata['fo_cnt']?></td>
               <td id="num_fans" style="width:90px;height:20px;"><?php echo $userdata['fa_cnt']?></td>
               <td id="num_weibo" style="width:90px;height:20px;"><?php echo $userdata['msg_cnt']?></td>
@@ -321,4 +321,171 @@ function display_fan_fo_msg_cnt(){
 	        </div>
 <?php
 }
+function display_personal_page_navbar(){
 ?>
+<div style="background-color:white;padding:10px;width:950px;margin:0 auto" >
+			      <div class="row clearfix">
+				    <div class="col-md-4">  </div>
+					<div class="col-md-8">
+				     <table>
+				      <tr>
+				       <td>
+					    <a href="#" class="active" style="font-size:20px;font-weight:200;color:black">我的主页</a> </td>
+				       <td>&nbsp; &nbsp; &nbsp;
+					    <a href="#" style="font-size:20px;font-weight:200;color:black">我的相册</a></td>
+				       <td>&nbsp; &nbsp; &nbsp;
+					    <a href="#" style="font-size:20px;font-weight:200;color:black">管理中心</a></td>
+				      </tr>
+			         </table>
+				    </div>
+				  </div>
+			</div>
+<?php
+}
+function display_personal_page_left($userdata){
+	?>
+<div class="col-md-offset-1 col-md-4">
+			   </br>
+      <!---------------------------------------关注数、粉丝数、微博数部分-------------------------------------------------------------->
+				<div  class="thumbnail" style="background-color:white;padding:20px;width:365px;margin:0 auto" >
+			    <table style="margin-left:3px;">
+                <tr>
+                  <td id="num_follow"style="width:90px;height:20px;"><?php echo $userdata['fo_cnt']?></td>
+                  <td id="num_fans"style="width:90px;height:20px;"><?php echo $userdata['fa_cnt']?></td>
+                  <td id="num_weibo"style="width:90px;height:20px;"><?php echo $userdata['msg_cnt']?></td>
+                </tr>
+                <tr>
+                  <td style="width:80px;height:20px;">关注 </td>
+                  <td style="width:80px;height:20px;">粉丝 </td>
+                  <td style="width:80px;height:20px;">微博 </td>
+                </tr>
+                </table>
+				</div>
+				</br>
+      <!---------------------------------------------------资料完成度部分-------------------------------------------------------------->				
+				<div class="thumbnail" id="fixed" style="background-color:white;padding:20px;width:365px;margin:0 auto" >
+				  <h4 style="text-align:left">
+				   申请认证
+				  </h4> <hr />
+				  <p style="font-style:italic">资料完成度：50%</p>
+				  <div class="progress">
+	               <div class="progress-bar" role="progressbar" aria-valuenow="60"
+		                aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+		           </div>
+                   </div>
+				  <hr />
+				  <a class="btn" href="#">编辑个人资料 »</a>
+				  </div> <br/>
+      <!------------------------------------------------我发表的文章部分--------------------------------------------------------------->				
+				<div class="thumbnail" style="background-color:white;padding:20px;width:365px;margin:0 auto" >
+				  <h4 style="text-align:left">
+				   我发表的文章[1]
+				  </h4> <hr />				
+				  <img alt="Ballade" src="http://wx4.sinaimg.cn/mw1024/869f1348ly1fgcx9vlnqoj20zk0katb8.jpg" style="margin:3px;" width="250" height="180"/>
+				  <p>
+					今天阳光真好,天空也很蓝，走在热闹的校园里，心里就响起了一首歌。
+				   </p>
+				   <hr />
+					<a class="btn" href="#">查看更多 »</a>
+				</div>
+				<br/>
+      <!-----------------------------------------------相册部分------------------------------------------------------------------------>				
+				 <div class="thumbnail" style="background-color:white;padding:20px;width:365px;margin:0 auto" >
+				  <h4 style="text-align:left">
+				   相册
+				  </h4>
+				  <table>
+				   <tr>
+				    <td><img alt="Ballade" src="http://wx4.sinaimg.cn/mw1024/869f1348ly1fg5scrpbqoj20zk0m8jub.jpg" style="margin:3px;"width="100" height="100"/> </td>
+					<td><img alt="Ballade" src="http://wx4.sinaimg.cn/mw1024/869f1348ly1fg5scrx8p1j20dw099dg8.jpg" style="margin:3px;" width="100" height="100"/></td>
+					<td><img alt="Ballade" src="http://wx2.sinaimg.cn/mw1024/869f1348ly1fg5scs55oej20e209wgmj.jpg" style="margin:3px;"width="100" height="100"/></td>
+				   </tr>
+				   <tr>
+				    <td><img alt="Ballade" src="http://wx2.sinaimg.cn/mw1024/869f1348ly1fg5scsciwnj20e609675p.jpg" style="margin:3px;"width="100" height="100"/></td>
+				    <td><img alt="Ballade" src="http://wx4.sinaimg.cn/mw1024/869f1348ly1fg5scsno2cj20dw09awft.jpg" style="margin:3px;"width="100" height="100"/></td>
+				    <td><img alt="Ballade" src="http://wx3.sinaimg.cn/mw1024/869f1348ly1fg5scswsltj20j60qnagf.jpg" style="margin:3px;"width="100" height="100"/></td>
+				   </tr>
+				  </table>
+				  <hr />
+				   <a class="btn" href="#">查看更多 »</a>
+				  </div>
+				  </br>
+      <!-------------------------------------------赞部分----------------------------------------------------------------------------->
+				  <div class="thumbnail" style="background-color:white;padding:20px;width:365px;margin:0 auto" >
+				  <h4 style="text-align:left">
+				   赞
+				  </h4> 
+				  <table>
+				  <tr>
+				  <td><img alt="Ballade" src="http://wx4.sinaimg.cn/mw1024/869f1348ly1fg5sct6f2cj20j40j442t.jpg" style="margin:3px;" width="100" height="100"/></td>
+				  <td><p>茅子俊，果真是从江南水乡里走出来的"谦谦公子，温润如玉"啊[迷妹脸]</p></td>
+				  </tr>
+				  </table>
+				   <hr />
+				  <a class="btn" href="#">查看更多 »</a>
+				  </div>
+				</div>
+					
+<?php
+}
+function total_hot_more() {
+	?>
+	<div class="thumbnail" style="background-color:white;padding:2px;width:555px;float:left" >
+			      <table>
+				   <tr>
+				    <td >&nbsp; &nbsp; &nbsp;
+					  <a href="#" class="active" style="font-size:18px;font-weight:200">全部</a> </td>
+				  <td>&nbsp; &nbsp; &nbsp;
+					 <a href="#" style="font-size:18px;font-weight:200">热门     </a></td>
+				  <td>&nbsp; &nbsp; &nbsp;
+					 <a href="#" style="font-size:18px;font-weight:200">更多    </a></td>
+				  </tr>
+			      </table>
+				  </div>
+<?php
+}
+function personal_page_display_single_msg($row){
+	?>
+	<div class="thumbnail" style="background-color:white;padding:20px;width:555px;float:left" >	
+			<div class="row clearfix">
+				<div class="col-md-8 column">
+					<div class="media">
+						 <a href="#" class="pull-left" target="_blank"><img src="http://wx4.sinaimg.cn/mw1024/869f1348ly1fg5sdcjxhkj203c01cq36.jpg" class="media-object" style="border-radius:50%;width:80px;height:80px;" alt='' /></a>
+						<div class="media-body">
+							<a href="#" target="_blank"style="text-align:left"><h4 class="media-heading">
+								<?php echo $row['nname'] ?>
+							</h4></a>
+							<p  class="txt" style="text-align:left;font-size:12px;color:#B3B3B3"><?php echo $row['time']?><br/>
+							<b style="text-align:left;font-size:13px;color:black">
+								<?php
+									if ($row['sign'] != NULL) {
+									?>
+									<p><?php echo $row['sign'] ?></p>
+								<?php } ?>
+							</b></p>
+							
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 column"></div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<div class="txt" style="font-family:sans-serif;">
+						<?php echo $row['content'] ?>
+					</div></br>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+				<div class="col-md-8 column"></div>
+						<div class="col-md-4 column"><div class="txt">
+						<span class="glyphicon glyphicon-edit"></span><?php echo $row['tran_cnt']?></span>&nbsp;
+						<span class="glyphicon glyphicon-thumbs-up"></span><?php echo $row['like_cnt']?></span></div>
+						</div>						
+				</div>
+			</div>
+		</div><br/>
+	<?php
+}
+	?>

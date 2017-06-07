@@ -15,7 +15,7 @@
 				<div class="col-md-2 column">
 					<ul class="nav nav-tabs nav-stacked" style="position:fixed;width:170px;top:60px;font-size:18px;background-color:#E8E8E8;opacity:0.8;">
 								<li class="active">
-									 <a href="/index.php" ><span class="glyphicon glyphicon-flag" style="color: rgb(0,0,0);"> 热门</span></a>
+									 <a href="/" ><span class="glyphicon glyphicon-flag" style="color: rgb(0,0,0);"> 热门</span></a>
 								</li>
 								<li>
 									 <a href="#"><span class="glyphicon glyphicon-film" style="color: rgb(0,0,0);"> 视频</span></a>
@@ -52,7 +52,7 @@
 					<?php 
 					//$get_query=mysql_query("CALL server_roomtype_info");
 						$query = mysql_query("SELECT * FROM user NATURAL JOIN 
-							(SELECT * FROM publish WHERE msg_type <> 2 ORDER BY time DESC) AS top10
+							(SELECT * FROM publish WHERE msg_type <> 2 ORDER BY time DESC LIMIT 10) AS top10
 								NATURAL JOIN message ORDER BY time DESC");
 						while ($row=mysql_fetch_array($query)) {
 							display_weibo_single($row);
