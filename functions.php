@@ -25,6 +25,30 @@ function getUserInfo($mail, $pwd){
 		);
 	}return $userinfo;
 }
+
+function modify_user_basic($nickname, $signdata)
+{
+	$email = $_SESSION['user_info']['mail'];
+	$userinfo = get_full_user_info($email);
+	
+	if ( $nickname != $userinfo['nname']) {
+		//$nickname = "'".$nickname."'";
+		$query_str = "UPDATE user SET nname = '$nickname' WHERE mail= '$email'";
+		//$query_str = 'UPDATE user SET nname = '.$nickname.' WHERE mail = '."'".$email."'";
+		mysql_query($query_str);//or die(mysql_error());
+	}
+	
+	if ( $signdata != $userinfo['sign']) {
+		if (!isset($signdata) or empty($signdata))
+			$signdata = 'NULL';
+		else
+			$signdata = "'".$signdata."'";
+		$query_str = 'UPDATE user SET sign = '.$signdata.' WHERE mail = '."'".$email."'";
+		mysql_query($query_str);	
+	}
+	return true;
+}
+
 function directly_insert_user($mail, $pwd, $name, $mysign)
 {
 	$mail = "'".$mail."'";
@@ -103,12 +127,14 @@ function logout()
 	unset ( $_SESSION['user_info'] );
     if (! empty ( $_COOKIE ['mail'] ) || ! empty ( $_COOKIE ['pwd'] ))   
     {  
-        setcookie ( "mail", null, time () - COOKIETIME );  
-        setcookie ( "pwd", null, time () - COOKIETIME );  
+        setcookie ( 'mail', null, time() - COOKIETIME );  
+        setcookie ( 'pwd', null, time() - COOKIETIME );  
     }
     session_destroy();
-    if(empty($_SESSION['user_info']) && empty($_COOKIE['mail']) && empty($_COOKIE['pwd']))
+    if( empty($_SESSION['user_info']) && empty( $_COOKIE['mail']) && empty($_COOKIE['pwd'])) {
     	return true;
-    else return false;
+    } else {
+    	return false;
+    }
 }
 ?>

@@ -25,8 +25,10 @@ if( $action == 'login' ){
 	}
 }
 elseif ( $action == 'logout' ) {
-	if(logout()) echo "success";
-	else echo "error";
+	if(logout())
+		echo "success";
+	else
+		echo "error";
 }
 elseif ( $action == 'register')
 {
