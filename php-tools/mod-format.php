@@ -301,12 +301,12 @@ function display_fan_fo_msg_cnt(){
 <div class="row clearfix">
 		         <div class="col-md-12 column" style="width:280px;background-color:white;opacity:0.8;margin-top:40px;margin-left:10px;">
 			<table style="text-align:center">
-            <tr><td><a href="http://localhost/personal_page.html"><img id="head" src="" style="border-radius:50%;width:100px;height:100px;"/></td></tr>
-            <tr><td style="height:30px"><a id="username" href="http://localhost/personal_page.html"></a></td></tr>
+				<?php $userdata = get_full_user_info($_COOKIE['mail']);?>
+            <tr><td><a href="http://localhost/personal_page.html"><img id="head" src="http://wx4.sinaimg.cn/mw1024/869f1348ly1fg5sdcjxhkj203c01cq36.jpg" style="border-radius:50%;width:100px;height:100px;"/></td></tr>
+            <tr><td style="height:30px"><a id="username" href="http://localhost/personal_page.html"></a><?php echo $userdata['nname']?></td></tr>
             <tr><td id="descrip" style="height:30px"></td></tr></table>
 			<table style="margin-left:30px;">
             <tr>
-            	<?php $userdata = get_full_user_info($_COOKIE['mail']);?>
               <td id="num_folllow" style="width:90px;height:20px;"><?php echo $userdata['fo_cnt']?></td>
               <td id="num_fans" style="width:90px;height:20px;"><?php echo $userdata['fa_cnt']?></td>
               <td id="num_weibo" style="width:90px;height:20px;"><?php echo $userdata['msg_cnt']?></td>

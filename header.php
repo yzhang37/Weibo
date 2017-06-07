@@ -87,7 +87,7 @@
                              	?></span></span></a><!--需要显示用户名-->
                         </li>
                         <li>
-                             <a href="javascript:void(0);" id="user_logout"><span class="glyphicon glyphicon-log-out" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">退出</span></span></a><!--需要显示用户名-->
+                             <a href="/" id="user_logout"><span class="glyphicon glyphicon-log-out" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">退出</span></span></a><!--需要显示用户名-->
                         </li>
                         <li class="dropdown">
                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
