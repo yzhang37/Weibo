@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css" />
 	<?php if ( !empty ($page_css) ) echo '<link rel="stylesheet" type="text/css" href="'.$page_css.'" />';?>
 	
-	<script type='text/javascript' src='http://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.3.min.js'></script>
+	<script type='text/javascript' src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js'></script>
 	<script type="text/javascript" src='https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 	<script type="text/javascript" src='/js/plugin.js'></script>
 	<script type="text/javascript" src="/js/main.js"></script>
@@ -82,9 +82,9 @@
                              <a href="#"><span class="glyphicon glyphicon-film" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">视频</span></span></a>
                         </li>
                         <li>
-                             <a href="#"><span class="glyphicon glyphicon-user" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;"><?php
+                             <a href="javascript:void(0);" onclick="window.location.href='/h/dashboard'"><span class="glyphicon glyphicon-user" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;"><?php
                              	echo $userdata['nname'];
-                             	?></span></span></a><!--需要显示用户名-->
+                             	?></span></span></a>
                         </li>
                         <li>
                              <a href="javascript:void(0);" id="user_logout"><span class="glyphicon glyphicon-log-out" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">退出</span></span></a><!--需要显示用户名-->

@@ -14,7 +14,7 @@ var main = {
 				type: "POST",
 				url: "/login-ajax.php",
 				cache: false,
-				data: "mail="+mail+"&pwd="+pwd+"&action=login",
+				data: {mail: mail, pwd: pwd, action: 'login'},
 				success: function(msg){
 					alert(msg);
 					window.location.reload();
@@ -30,8 +30,7 @@ var main = {
 				cache: false,
 				data: "action=logout",
 				success: function(msg){
-					alert(msg);
-					window.location.reload();
+					window.location.href = "/";
 				}
 			});
 		});

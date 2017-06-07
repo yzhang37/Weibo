@@ -7,8 +7,8 @@ $(function(){ login.init(); });
 var login = {
 	init: function(){
 		this.login(),
-		this.login_2(),
-		this.logout()
+		this.login_2()
+		//this.logout()
 	},
 	login: function(){
 		$('#log_login').click(function()
@@ -74,7 +74,8 @@ var login = {
 					type: "POST",
 					url: "/login-ajax.php",
 					cache: false,
-					data: "mail=" + mail + "&pwd=" + pwd + "&action=login",
+					//数据传送方式改为 POST
+					data: {mail: mail, pwd: pwd, action: 'login'},
 					success: function(msg)
 					{
 						switch(msg)
@@ -97,6 +98,7 @@ var login = {
 		});
 	},
 }
+/*
 function logout_ajax()
 {
 	$.ajax({
@@ -104,9 +106,8 @@ function logout_ajax()
 			url: "/login-ajax.php",
 			cache: false,
 			data: "action=logout",
-			success: function(msg){
-				alert(msg);
-				window.location.reload();
+			success: function(msg) {
+				window.location.href = "/";
 			}
 		});
-}
+}*/
