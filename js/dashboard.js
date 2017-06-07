@@ -5,7 +5,16 @@ jQuery(function(){
 	var binfo_form = $("#basic_info");
 	var binfo_form_nname = binfo_form.find("[name='nickname']");
 	var binfo_form_sign = binfo_form.find("[name='signature']");
-	
+
+	function Resize_Avatar(){
+		$("img.avatar-icon").each(function(){
+			$(this).height($(this).width());
+		});
+	}
+
+	$(window).resize(Resize_Avatar);
+	$(window).load(Resize_Avatar);	
+
 	function Disable_Submit() {
 		binfo_form_submit.removeAttr('disabled');
 	};
