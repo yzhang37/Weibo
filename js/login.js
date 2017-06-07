@@ -98,16 +98,3 @@ var login = {
 		});
 	},
 }
-/*
-function logout_ajax()
-{
-	$.ajax({
-			type: "POST",
-			url: "/login-ajax.php",
-			cache: false,
-			data: "action=logout",
-			success: function(msg) {
-				window.location.href = "/";
-			}
-		});
-}*/
