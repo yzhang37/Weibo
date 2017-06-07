@@ -15,7 +15,7 @@
 				<div class="col-md-2 column">
 					<ul class="nav nav-tabs nav-stacked" style="position:fixed;width:170px;top:60px;font-size:18px;background-color:#E8E8E8;opacity:0.8;">
 								<li class="active">
-									 <a href="/index.php" ><span class="glyphicon glyphicon-flag" style="color: rgb(0,0,0);"> 热门</span></a>
+									 <a href="/" ><span class="glyphicon glyphicon-flag" style="color: rgb(0,0,0);"> 热门</span></a>
 								</li>
 								<li>
 									 <a href="#"><span class="glyphicon glyphicon-film" style="color: rgb(0,0,0);"> 视频</span></a>

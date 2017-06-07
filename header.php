@@ -10,8 +10,8 @@
 	<title>weibo-发现好玩有趣的事情</title>
 	
 	<link rel="stylesheet" type="text/css" href='https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css' />
-	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
-	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="/font-awesome/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="/style.css" />
 	<?php if ( !empty ($page_css) ) echo '<link rel="stylesheet" type="text/css" href="'.$page_css.'" />';?>
 	
 	<script type='text/javascript' src='http://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.3.min.js'></script>
@@ -25,7 +25,10 @@
    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
    <script src="http://cdn.static.runoob.com/libs/jquery/2.0.0/jquery.min.js"></script>
    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
+   <link rel="stylesheet" href="../js/easyform/easyform.css">
+    <link rel="stylesheet" href="../css/platform-1.css">
+	<link rel="stylesheet" href="../css/tab.css">  
+	<script src="../js/easyform/easyform.js"></script>
 </head>
 <body>
 <div class="container">

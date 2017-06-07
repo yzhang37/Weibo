@@ -17,3 +17,11 @@
 .orange { color: orange; }
 .blue { color: cornflowerblue; }
 
+
+.thumbnail p {
+	text-align: initial;
+}
+
+.thumbnail .txt{
+	text-align: initial;
+}

@@ -51,12 +51,20 @@ function display_follow_msg() {
 	$userdata = get_full_user_info($email);
 	$uid = $userdata['user_id'];
 	$query = mysql_query("SELECT * FROM ( ((SELECT * FROM publish WHERE user_id = '$uid' OR user_id IN (SELECT fo_id FROM follow WHERE fa_id = '$uid' ORDER BY time DESC) )AS FO 
-	NATURAL JOIN message) NATURAL JOIN user) ORDER BY time DESC ") or die('');
+	NATURAL JOIN message) NATURAL JOIN user) ORDER BY time DESC LIMIT 10") or die('');
 	while ($row=mysql_fetch_array($query)) {
 		display_weibo_single($row);
 	}
 }
 
+function display_personal_page_msg($userdata){
+	$uid = $userdata['user_id'];
+	$query = mysql_query("SELECT * FROM ( ((SELECT * FROM publish WHERE user_id = '$uid' OR user_id IN (SELECT fo_id FROM follow WHERE fa_id = '$uid' ORDER BY time DESC) )AS FO 
+	NATURAL JOIN message) NATURAL JOIN user) ORDER BY time DESC LIMIT 10") or die('');
+	while ($row=mysql_fetch_array($query)) {
+		personal_page_display_single_msg($row);
+}
+}
 
 function is_new_email($user_mail)
 {
