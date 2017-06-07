@@ -26,7 +26,6 @@
    <script src="http://cdn.static.runoob.com/libs/jquery/2.0.0/jquery.min.js"></script>
    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    <link rel="stylesheet" href="../js/easyform/easyform.css">
-    <link rel="stylesheet" href="../css/platform-1.css">
 	<link rel="stylesheet" href="../css/tab.css">  
 	<script src="../js/easyform/easyform.js"></script>
 </head>
@@ -90,7 +89,7 @@
                              	?></span></span></a><!--需要显示用户名-->
                         </li>
                         <li>
-                             <a href="/" id="user_logout"><span class="glyphicon glyphicon-log-out" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">退出</span></span></a><!--需要显示用户名-->
+                             <a href="javascript: void(0);" id="user_logout"><span class="glyphicon glyphicon-log-out" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">退出</span></span></a><!--需要显示用户名-->
                         </li>
                         <li class="dropdown">
                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">

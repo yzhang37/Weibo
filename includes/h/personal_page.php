@@ -44,13 +44,13 @@
 		background: url("http://wx2.sinaimg.cn/mw1024/869f1348ly1fg5scrhor1j218g0gw766.jpg");
 	}
 </style>
-
+<link rel="stylesheet" href="../css/platform-1.css">
 </br></br></br>
   <div class="container" style="background-color:rgba(36,61,89,0.25)">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
 			<!-----------------------------------------------背景图、头像和名称部分---------------------------------------------------------------->
-			<div  style="background:url(http://wx2.sinaimg.cn/mw1024/869f1348ly1fg5scr9ar5j20g40ar75j.jpg);padding:50px;width:950px;margin:0 auto" >
+			<div  style="background:url(http://wx2.sinaimg.cn/mw1024/869f1348ly1fg5scr9ar5j20g40ar75j.jpg);padding:50px;width:950px;margin:0 auto;text-align:center;" >
 			<img id="headurl"class="img-circle" width="100" height="100" src="http://wx4.sinaimg.cn/mw1024/869f1348ly1fg5sdcjxhkj203c01cq36.jpg" />
 			<p class="text-center" style="font-size:22px" id="username">
 				<?php $userdata = get_full_user_info($url_param['action']);?>
