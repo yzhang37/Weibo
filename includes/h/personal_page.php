@@ -1,4 +1,3 @@
-
 <?php get_header(); ?>
 <style type="text/css">	  
 	  /*returnTop*/
@@ -41,7 +40,7 @@
 	</style>
 <style>
 	body {
-		background: url("http://wx2.sinaimg.cn/mw1024/869f1348ly1fg5scrhor1j218g0gw766.jpg");
+		background-image: url("http://wx2.sinaimg.cn/mw1024/869f1348ly1fg5scrhor1j218g0gw766.jpg");
 	}
 </style>
 <link rel="stylesheet" href="../css/platform-1.css">
@@ -57,6 +56,20 @@
 				<?php echo $userdata['nname']?><br/>
 			  <b id="descrip"class="text-center" style="font-size:12px"><?php echo $userdata['sign']?></b>
 			</p>
+			<?php
+				//echo $userdata['mail'];
+				//echo $_SESSION['user_info']['mail'];
+				if (checklogin()==true && $_SESSION['user_info']['mail'] != $userdata['mail']){
+					if(is_followed($_SESSION['user_info']['mail'],$userdata['mail'])){
+					?>
+						<button type="button" class="btn" id="fol-op" data-isfollowed="true" data-umail="<?php echo $userdata['mail'];?>">取消关注</button> &nbsp;&nbsp;&nbsp;
+					<?php } else {?>	
+						<button type="button" class="btn" id="fol-op" data-isfollowed="false" data-umail="<?php echo $userdata['mail'];?>">关注</button> &nbsp;&nbsp;&nbsp;
+					<?php }?>
+            		<button type="button" class="btn" id="chat-op">私信</button>
+			<?php
+			}?>
+			
 			</div>
 			<?php display_personal_page_navbar(); ?>
 			<div class="row clearfix">
@@ -71,3 +84,4 @@
 		</div>	
   </div>
  </div>
+ <?php get_footer();?>

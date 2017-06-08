@@ -1,11 +1,10 @@
+<?php get_header(); ?>
 <style>
 	body {
 		background-image: url("http://wx3.sinaimg.cn/mw1024/869f1348ly1fg5sdb5qkaj218g0pa75d.jpg");
 	}
 </style>
 <script type="text/javascript" src="../../js/login.js"></script> 
-<!-----------------------------------------------------------------头部------------------不需要写PHP，但是有搜索看情况是否有关键字搜索并显示--------------------------------->
-
 <div class="container" style="background-color:rgba(36,61,89,0.25);">
 
   <!---------------------------------------------------------------左部-----------------------------都是空链接，不需要PHP----------------------------------------------------->
@@ -45,20 +44,19 @@
 				</div>
 				<!-----------------------------------------------------------中部----------------------去掉定时轮询，只需要不断加载消息（瀑布流）------------------------------------------>
 				<div class="col-md-7 column" style="position:relative;top:60px;">
-					<!-----------------------------------------------------------轮播图-------=----------------只是页面效果，不用PHP------------------------------------------>
-					<?php display_roll_picture(); ?>
-					<br/>
-					<!-----------------------------------------------------消息展示调用模板（模板代码在php-tool/mod-format.php里）---------------------------------------------->
-					<?php 
-					//$get_query=mysql_query("CALL server_roomtype_info");
-						$query = mysql_query("SELECT * FROM user NATURAL JOIN 
-							(SELECT * FROM publish WHERE msg_type <> 2 ORDER BY time DESC LIMIT 30) AS top10
-								NATURAL JOIN message ORDER BY time DESC");
+					<!-----------------------------------------------------用户展示调用模板（模板代码在php-tool/mod-format.php里）---------------------------------------------->
+					<?php
+						$str = $url_param['action'];
+//						echo urldecode($str);
+						$s = urldecode($str);
+//						echo $s;
+						$query = mysql_query("SELECT * FROM user WHERE nname like '%$s%' OR mail like '%$s%' LIMIT 30") 
+						or die(mysql_error());
 						while ($row=mysql_fetch_array($query)) {
-							display_weibo_single($row);
-						}		
-					?>
-				<!--------------------------------------------------------------消息展示结束（分页加载）------------------------------------------->
+							display_user_info($row);
+						}	
+						?>
+				<!--------------------------------------------------------------用户展示结束（分页加载）------------------------------------------->
 				</div>
 
 				<!------------------------------------------------------------------右部------------------------------------------------------------------------>
@@ -76,5 +74,4 @@
 		</div>
 	</div>
  </div>
-
-
+ <?php get_footer();?>

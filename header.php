@@ -9,25 +9,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />  
 	<title>weibo-发现好玩有趣的事情</title>
 	
+	<link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href='https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css' />
 	<link rel="stylesheet" type="text/css" href="/font-awesome/css/font-awesome.min.css" />
-	<link rel="stylesheet" type="text/css" href="/style.css" />
+	<link rel="stylesheet" type="text/css" href="/css/main.css" />
 	<?php if ( !empty ($page_css) ) echo '<link rel="stylesheet" type="text/css" href="'.$page_css.'" />';?>
 	
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.0.0/jquery.min.js"></script>
 	<script type='text/javascript' src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js'></script>
+	<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+   <script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src='https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 	<script type="text/javascript" src='/js/plugin.js'></script>
 	<script type="text/javascript" src="/js/main.js"></script>
+    <script type="text/javascript" src="/js/search.js"></script>
 	<?php if ( !empty ($page_script) ) echo '<script type="text/javascript" src="'.$page_script.'"></script>';?>
-   <script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-   <script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-   <link href="../styles/weibo.css" type="text/css" rel="stylesheet" />
-   <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-   <script src="http://cdn.static.runoob.com/libs/jquery/2.0.0/jquery.min.js"></script>
-   <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   <link rel="stylesheet" href="../js/easyform/easyform.css">
-	<link rel="stylesheet" href="../css/tab.css">  
-	<script src="../js/easyform/easyform.js"></script>
+   
+   <link href="/styles/weibo.css" type="text/css" rel="stylesheet" />
+   
+   
+   <link rel="stylesheet" href="/js/easyform/easyform.css">
+	<link rel="stylesheet" href="/css/tab.css">  
+	<script src="/js/easyform/easyform.js"></script>
 </head>
 <body>
 <div class="container">
@@ -42,8 +46,9 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<form class="navbar-form navbar-left" role="search">
 						<div class="form-group">
-							<input class="form-control" type="text" />
-						</div> <button type="submit" class="btn btn-default">搜索</button>
+							<input class="form-control" type="text" id="search-box"/>
+						</div>
+						 <button id = "search-op" type="submit" class="btn btn-default">搜索</button>
 					</form>
 					<ul class="nav navbar-nav navbar-right">
 					<?php
@@ -61,6 +66,11 @@
 							 <a href="javascript: void(0);" onclick="window.location.href='/register';"><span class="glyphicon glyphicon-tower" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">注册</span>
 							 </span></a>
 						</li>
+						<script>
+                            $(function() {
+                                $(".dropdown-toggle").dropdown();
+                            });
+                        </script>
 						<li class="dropdown">
 							 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-leaf" style="color: rgb(0,0,0);"> 关于我们</span><strong class="caret"></strong></a>
 							<ul class="dropdown-menu">
@@ -91,7 +101,12 @@
                         <li>
                              <a href="javascript: void(0);" id="user_logout"><span class="glyphicon glyphicon-log-out" style="color: rgb(0,0,0);"><span style="margin-left: 0.8em;">退出</span></span></a><!--需要显示用户名-->
                         </li>
-                        <li class="dropdown">
+                        <script>
+                            $(function() {
+                                $(".dropdown-toggle").dropdown();
+                            });
+                        </script>
+                        <li id="main-nav-dropdown" class="dropdown">
                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                              	<span class="glyphicon glyphicon-cog" style="color: rgb(0,0,0);">设置</span><strong class="caret"></strong></a>
                             <ul class="dropdown-menu">

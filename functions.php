@@ -71,11 +71,11 @@ function get_full_user_info($user_mail){
 }
 
 function display_follow_msg() {
-	$email = $_COOKIE['mail'];
+	$email = $_SESSION['user_info']['mail'];
 	$userdata = get_full_user_info($email);
 	$uid = $userdata['user_id'];
 	$query = mysql_query("SELECT * FROM ( ((SELECT * FROM publish WHERE user_id = '$uid' OR user_id IN (SELECT fo_id FROM follow WHERE fa_id = '$uid' ORDER BY time DESC) )AS FO 
-	NATURAL JOIN message) NATURAL JOIN user) ORDER BY time DESC LIMIT 10") or die('');
+	NATURAL JOIN message) NATURAL JOIN user) ORDER BY time DESC LIMIT 30") or die('');
 	while ($row=mysql_fetch_array($query)) {
 		display_weibo_single($row);
 	}
@@ -136,5 +136,17 @@ function logout()
     } else {
     	return false;
     }
+}
+function is_followed($fan_mail,$fo_mail) {
+	$query = mysql_query("SELECT user_id FROM user WHERE mail='$fan_mail'") or die('error');
+	$row = mysql_fetch_array($query);
+	$fan_id = $row['user_id'];
+	$query2 = mysql_query("SELECT user_id FROM user WHERE mail='$fo_mail'") or die('error');
+	$row2 = mysql_fetch_array($query2);
+	$fo_id = $row2['user_id'];
+	$query3 = mysql_query("SELECT * FROM follow WHERE fa_id='$fan_id' AND fo_id = '$fo_id'") or die('error');
+	if ($row3 = mysql_fetch_array($query3)) 
+		return true;
+	return false;
 }
 ?>

@@ -4,7 +4,7 @@
 	}
 </style>
 <script>
-	var gb_mail="<?php echo $_COOKIE['mail'];?>";
+	var gb_mail="<?php echo $_SESSION['user_info']['mail'];?>";
 </script>
 <script type="text/javascript" src="/js/message.js"></script>
 <div class="container" style="background-color:rgba(36,61,89,0.25);">

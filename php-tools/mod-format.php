@@ -301,7 +301,7 @@ function display_fan_fo_msg_cnt(){
 <div class="row clearfix">
 		         <div class="col-md-12 column" style="width:280px;background-color:white;opacity:0.8;margin-top:40px;margin-left:10px;">
 			<table style="text-align:center">
-				<?php $userdata = get_full_user_info($_COOKIE['mail']);?>
+				<?php $userdata = get_full_user_info($_SESSION['user_info']['mail']);?>
             <tr><td><a href="/h/personal_page"><img id="head" src="http://wx4.sinaimg.cn/mw1024/869f1348ly1fg5sdcjxhkj203c01cq36.jpg" style="border-radius:50%;width:100px;height:100px;"/></td></tr>
             <tr><td style="height:30px"><a id="username" href="http://localhost/personal_page.html"></a><?php echo $userdata['nname']?></td></tr>
             <tr><td id="descrip" style="height:30px"></td></tr></table>
@@ -450,7 +450,7 @@ function personal_page_display_single_msg($row){
 			<div class="row clearfix">
 				<div class="col-md-8 column">
 					<div class="media">
-						 <a href="#" class="pull-left" target="_blank"><img src="http://wx4.sinaimg.cn/mw1024/869f1348ly1fg5sdcjxhkj203c01cq36.jpg" class="media-object" style="border-radius:50%;width:80px;height:80px;" alt='' /></a>
+						 <a href="/h/personal_page/<?php echo $row['mail'];?>" class="pull-left" target="_blank"><img src="http://wx4.sinaimg.cn/mw1024/869f1348ly1fg5sdcjxhkj203c01cq36.jpg" class="media-object" style="border-radius:50%;width:80px;height:80px;" alt='' /></a>
 						<div class="media-body">
 							<a href="#" target="_blank"style="text-align:left"><h4 class="media-heading">
 								<?php echo $row['nname'] ?>
@@ -488,4 +488,33 @@ function personal_page_display_single_msg($row){
 		</div><br/>
 	<?php
 }
+function display_user_info($row) {
 	?>
+	<div class="thumbnail" style="background-color:white;padding:20px;width:555px;float:left" >	
+			<div class="row clearfix">
+				<div class="col-md-8 column">
+					<div class="media">
+						 <a href="/h/personal_page/<?php echo $row['mail'];?>" class="pull-left" target="_blank"><img src="http://wx4.sinaimg.cn/mw1024/869f1348ly1fg5sdcjxhkj203c01cq36.jpg" class="media-object" style="border-radius:50%;width:80px;height:80px;" alt='' /></a>
+						<div class="media-body">
+							<a href="#" target="_blank"style="text-align:left"><h4 class="media-heading">
+								<?php echo $row['nname'] ?>
+							</h4></a>
+							<p  class="txt" style="text-align:left;font-size:12px;color:#B3B3B3"><?php echo $row['mail']?>
+							<b style="text-align:left;font-size:13px;color:black">
+								<?php
+									if ($row['sign'] != NULL) {
+									?>
+									<p><?php echo $row['sign'] ?></p>
+								<?php } ?>
+							</b></p>
+							
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 column"></div>
+			</div>
+			
+		</div><br/>
+<?php
+}
+?>
