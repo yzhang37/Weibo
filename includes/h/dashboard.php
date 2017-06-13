@@ -32,29 +32,31 @@ if ( ! checklogin())
 	$email = $_SESSION['user_info']['mail'];
 	$userdata = get_full_user_info($email);
 	$raw_nname = $userdata['nname'];
+	$raw_cell = $userdata['mobile'];
+	$raw_tele = $userdata['telephone'];
 	$raw_sign = $userdata['sign'];
 ?>
 
 <div class="container">
 	<div class="panel panel-default" style="box-shadow: 0px 10px 20px 0px rgba(30,30,30,0.2);">
 		<div class="panel-heading">
-			<h3>Personal Settings</h3>
+			<h3>个人设置</h3>
 		</div>
 		<div class="panel-body">
 			<div id="basic_info">
-				<h4>Basic Information</h4>
+				<h4>基本信息</h4>
 				<div class="row">
 					<div class="col-xs-12 col-sm-5 col-md-2 col-lg-2">昵称:</div>
 					<div class="col-xs-12 col-sm-7 col-md-4 col-lg-4"><input class="form-control" name="nickname" value="<?php echo $raw_nname;?>"></input>
 						<div class="form_field_warning" id="warning_nickname" style="display: none;"></div>
 					</div>
-					<div class="col-xs-12 col-sm-5 col-md-2 col-lg-2">Mobile phone:</div>
-					<div class="col-xs-12 col-sm-7 col-md-4 col-lg-4"><input class="form-control" name="nickname" value="<?php echo $raw_nname;?>"></input>
-						<div class="form_field_warning" id="warning_nickname" style="display: none;"></div>
+					<div class="col-xs-12 col-sm-5 col-md-2 col-lg-2">手机:</div>
+					<div class="col-xs-12 col-sm-7 col-md-4 col-lg-4"><input class="form-control" name="cell" value="<?php echo $raw_cell;?>"></input>
+						<div class="form_field_warning" id="warning_cell" style="display: none;"></div>
 					</div>
-					<div class="col-xs-12 col-sm-5 col-md-2 col-lg-2">Telephone:</div>
-					<div class="col-xs-12 col-sm-7 col-md-4 col-lg-4"><input class="form-control" name="nickname" value="<?php echo $raw_nname;?>"></input>
-						<div class="form_field_warning" id="warning_nickname" style="display: none;"></div>
+					<div class="col-xs-12 col-sm-5 col-md-2 col-lg-2">电话:</div>
+					<div class="col-xs-12 col-sm-7 col-md-4 col-lg-4"><input class="form-control" name="tele" value="<?php echo $raw_tele;?>"></input>
+						<div class="form_field_warning" id="warning_tele" style="display: none;"></div>
 					</div>
 					<div class="col-xs-12 col-sm-5 col-md-2 col-lg-2">个人签名:</div>
 					<div class="col-xs-12 col-sm-7 col-md-4 col-lg-4"><textarea class="form-control" name="signature"><?php echo $raw_sign;?></textarea></div>

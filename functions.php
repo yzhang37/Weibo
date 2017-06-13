@@ -26,7 +26,7 @@ function getUserInfo($mail, $pwd){
 	}return $userinfo;
 }
 
-function modify_user_basic($nickname, $signdata)
+function modify_user_basic($nickname, $signdata, $cell, $tele)
 {
 	$email = $_SESSION['user_info']['mail'];
 	$userinfo = get_full_user_info($email);
@@ -46,6 +46,26 @@ function modify_user_basic($nickname, $signdata)
 		$query_str = 'UPDATE user SET sign = '.$signdata.' WHERE mail = '."'".$email."'";
 		mysql_query($query_str);	
 	}
+	
+	if ( $tele != $userinfo['telephone']) {
+		if (!isset($tele) or empty($tele))
+			$tele = 'NULL';
+		else
+			$tele = "'".$tele."'";
+		$query_str = 'UPDATE user SET telephone = '.$tele.' WHERE mail = '."'".$email."'";
+		mysql_query($query_str);	
+	}
+	
+	if ( $cell != $userinfo['mobile']) {
+		if (!isset($cell) or empty($cell))
+			$cell = 'NULL';
+		else
+			$cell = "'".$cell."'";
+		$query_str = 'UPDATE user SET mobile = '.$cell.' WHERE mail = '."'".$email."'";
+		mysql_query($query_str);	
+	}
+	
+	
 	return true;
 }
 
