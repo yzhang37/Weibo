@@ -1,4 +1,4 @@
-jQuery(function(){
+﻿jQuery(function(){
 	var binfo_form_submit = $("#dash_modify");
 	binfo_form_submit.attr({"disabled":""});
 	
@@ -28,6 +28,16 @@ jQuery(function(){
 		msg.html(htmltext).text(htmltext).show().fadeOut(5000);
 	};
 	
+	binfo_form_cell.on({
+		keypress: Disable_Submit,
+		change: Disable_Submit
+	});
+	
+	binfo_form_tele.on({
+		keypress: Disable_Submit,
+		change: Disable_Submit
+	});
+
 	binfo_form_nname.on({
 		keypress: Disable_Submit,
 		change: Disable_Submit
@@ -37,7 +47,7 @@ jQuery(function(){
 		keypress: Disable_Submit,
 		change: Disable_Submit
 	});
-	
+
 	binfo_form_submit.click(function(){
 		var nickdata = binfo_form_nname.val();
 		var signdata = binfo_form_sign.val();
@@ -49,15 +59,15 @@ jQuery(function(){
 			return;
 		}
 		
-		if (!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(cellnumber)))
+		if (cellnumber.length != 0 && !(/^1[3|4|5|8][0-9]\d{4,8}$/.test(cellnumber)))
 		{
 			Warning("warning_cell", "手机号的格式不正确哦，请修改为11位手机号格式。")
 			return;
 		}
 		
-		if (!(/^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/.test(telenumber)))
+		if (telenumber.length != 0 && !(/^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/.test(telenumber)))
 		{
-			Warning("warning_tele", "电话的格式不正确哦，请修改为11位手机号格式。")
+			Warning("warning_tele", "电话的格式不正确哦，请修改为正确电话格式。")
 			return;
 		}
 		
@@ -65,14 +75,14 @@ jQuery(function(){
 			{nick: nickdata, sign: signdata, action: 'modify_basic',
 			 tele: telenumber, cell:cellnumber}
 			, function(msg){
-				alert(msg);
+				//alert(msg);
 				switch (msg)
 				{
 				case 'success':
 					window.location.reload();
 					break;
 				default:
-					alert('update failed!');
+					alert('更新失败!');
 				}
 			});
 	});
